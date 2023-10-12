@@ -1,0 +1,15 @@
+{
+    "project": {
+        "name": "project1",
+        "users": [
+            "507f1f77bcf86cd799439011",
+            "00000020f51bb4362eee2a4d",
+            "75hadhwjaapvl09234bbcadw"
+        ],
+        "columns": [
+            {"column":"507f1f77bcf86cd799439011", "title": "column1", "titles": ["title1", "title2", "title3"]},
+            {"column":"581ajscnz11mm12904alcc1a", "title": "column2", "titles": ["title4", "title5", "title6"]},
+            {"column":"75hadhwjaapvl09234bbcadw", "title": "column3", "titles": ["title7", "title8", "title9"]}
+        ]
+    }
+}
