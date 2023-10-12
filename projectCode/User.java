@@ -9,7 +9,7 @@ public class User {
     public ArrayList<Project> projects;
 
 
-    public void User(String firstName, String lastName, String userName, String password, int UUID){
+    public void User(String firstName, String lastName, String userName, String password, int userId){
          
     }
 
@@ -24,6 +24,6 @@ public class User {
 
     }
     public void addPermission(User user, UserType type){
-        
+
     }
 }
