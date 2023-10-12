@@ -1,12 +1,12 @@
 package projectCode;
 import java.util.ArrayList;
 public class User {
-    protected String firstName;
-    protected String lastName; 
-    protected String userName;
-    protected int UUID;
-    protected String password;
-    public ArrayList<Project> projects;
+    private String firstName;
+    private String lastName; 
+    private String userName;
+    private int UUID;
+    private String password;
+    private ArrayList<Project> projects;
 
 
     public void User(String firstName, String lastName, String userName, String password, int userId){
