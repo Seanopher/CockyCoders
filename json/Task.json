@@ -1,5 +1,6 @@
 {
     "task": {
+        "id":"uuid",
         "taskName": "task1",
         "description": "this is the description for task1",
         "assignedUser": [
@@ -8,18 +9,20 @@
             "42014kcmklzp234adzz2amdm"
         ],
         "date":"10-11-2023",
-        "dueDate":"11-14-2023",
         "document": "document1.pdf",
         "taskType": "bug",
         "comments": [
-            {"comment": "this is comment1", "userID": 12345, "date": "10-11-2023"},
-            {"comment": "this is comment2", "userID": 54321, "date": "12-09-2023"},
-            {"comment": "this is comment3", "userID": 49134, "date": "13-12-2023"}
+            {"comment": "this is comment1", "userID": 12345, "date": "10-11-2023", "comments":[
+                "commentA", "commentB", "commentC"]},
+            {"comment": "this is comment2", "userID": 54321, "date": "12-09-2023", "comments":[
+                "commentA", "commentB", "commentC"]},
+            {"comment": "this is comment3", "userID": 49134, "date": "12-12-2023", "comments":[
+                "commentA", "commentB", "commentC"]}
         ],
         "history": [
-            "42014kcmklzp234adzz2amdm",
-            "45378hadh1kvmawidl139ca2",
-            "39248989akcmawdj7y1malap"
+            {"user":"uuid", "change":"created ###", "date": "12-09-2023"},
+            {"user":"uuid", "change":"modified ###", "date": "12-09-2023"},
+            {"user":"uuid", "change":"created ###", "date": "12-09-2023"}
         ]
     }
 }
