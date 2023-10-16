@@ -1,4 +1,8 @@
 package projectCode;
+<<<<<<< HEAD
+=======
+
+>>>>>>> StubsJR
 public abstract class DataConstants {
     protected static final String USER_FILE_NAME = "User.json";
     protected static final String USER = "userID";
