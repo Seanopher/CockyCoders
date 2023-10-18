@@ -1,7 +1,7 @@
 package projectCode;
 import java.util.ArrayList;
 public class Columns {
-    public Arraylist<Task> column;
+    public ArrayList<Task> column;
     public String title;
     public ArrayList<String> titles;
 
