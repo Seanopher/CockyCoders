@@ -10,6 +10,7 @@ public class User {
     private String password;
     private UserType userType;
     private ArrayList<Project> projects;
+    protected ArrayList<User> users;
     
 
 
@@ -49,6 +50,21 @@ public class User {
     /*
      * basic getters.
      */
+    public User getUser(UUID userID)
+    {
+        String userUUIDtoString = userID.toString(); //changes the UUID into a String
+        for (User user : users)
+        {
+            if (user.getUUID().equals(userUUIDtoString)) //checks if userId matches
+            {
+                return user; //returns a user matching the userUUID
+            }
+        }
+            /*
+            * User is not found
+            */
+        return null;
+    }
     public String getUUID()
     {
         return userID;
