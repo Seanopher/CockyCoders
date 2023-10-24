@@ -2,6 +2,8 @@ package projectCode;
 
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.UUID;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;;
@@ -19,13 +21,14 @@ public class DataLoader extends DataConstants{
 				JSONObject userJSON = (JSONObject)usersJSON.get(i);
 				String firstName = (String)userJSON.get(USER_FIRST_NAME);
 				String lastName = (String)userJSON.get(USER_LAST_NAME);
+                String userID = (String)userJSON.get(USER_UUID);
+                UUID UUID = UUID.fromString(userID);
 				String password = (String)userJSON.get(USER_PASSWORD);
                 String username = (String)userJSON.get(USER_USERNAME);
 				String userType = (String)userJSON.get(USER_USERTYPE);
                 String projects = (String)userJSON.get(USER_PROJECTS);
-				String points = (String)userJSON.get(USER_POINTS);
 				
-				users.add(new User(firstName, lastName, password ,username, userType, projects, points));
+				users.add(new User(firstName, lastName, UUID, userID, password, userType, projects));
 			}
             return true;
         } catch (Exception e) {
@@ -34,6 +37,8 @@ public class DataLoader extends DataConstants{
         return false;
     }
 
+
+    
     public boolean loadProjects(){
         ArrayList<Project> projects = new ArrayList<Project>();
 
