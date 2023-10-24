@@ -6,6 +6,7 @@ public class User {
     private String firstName;
     private String lastName; 
     private UUID UUID;
+    private String username;
     private String userID;
     private String password;
     private UserType userType;
@@ -19,16 +20,18 @@ public class User {
          * creates a new user takes in a UUID, their firstname, their lastName, their password, 
          * and their user type, use when need to make a new user
          */
-    public User newUser(UUID userID, String firstName, String lastName, String password, UserType userType)
+    public User newUser(UUID userID, String firstName, String lastName, String password, String username, UserType userType)
     {
-        if(userID != null && firstName != null && lastName != null && password != null && userType != null){
+        if(userID != null && firstName != null && lastName != null && password != null && userType != null)
+        {
             this.UUID = userID;
             this.userID = userID.toString();
             this.firstName = firstName;
             this.lastName = lastName;
             this.password = password;
+            this.username = username;
             this.userType = userType;
-            return newUser(userID, firstName, lastName, password, userType);
+            return newUser(userID, firstName, lastName, password, username, userType);
         }
         return null;
 
@@ -38,14 +41,17 @@ public class User {
      * takes in their UUID, firstname, lastName, password, 
          * and user type
      */
-    public User(String userID, String firstName, String lastName, String password, UserType userType)
+    public User(String userID, String firstName, String lastName, String password, String username, UserType userType)
     {
         if(userID != null && firstName != null && lastName != null && password != null && userType != null)
+        {
+
         this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
-
+        this.username = username;
+        }
     }
     /*
      * basic getters.
@@ -68,6 +74,9 @@ public class User {
     public String getUUID()
     {
         return userID;
+    }
+    public String getUsername(){
+        return username;
     }
     public String getFirstName()
     {
