@@ -1,5 +1,7 @@
 package projectCode;
 import java.util.ArrayList;
+//add the built in date function
+import java.util.Date;
 import java.util.UUID;
 //added more imports statements
 import java.io.IOException;
@@ -13,7 +15,7 @@ public class Task {
     public String description;
     public User assignedUser;
     public ArrayList<String> backLog;
-    public String date;
+    public Date date;
     public String document;
     public ArrayList<Comment> comments;
     public TaskType taskType;
@@ -30,8 +32,10 @@ public class Task {
     }
     */
     
-    public Columns changeColumn(Columns columnFrom, Columns columnsTo){
-        return changeColumn(columnFrom, columnsTo);
+    public Columns changeColumn(Columns columnFrom, Columns columnsTo, Task task){
+        
+        //return changeColumn(columnFrom, columnsTo, task);
+
     }
 
     //changed to a void (was String) to only change 
@@ -39,6 +43,9 @@ public class Task {
         Comment newComment = new Comment();
         comments.add(newComment);
     }
+
+/* 
+//These methods might be impemented later 
 
     // changed to void from "Task". 
     public void save(Task task){
@@ -55,6 +62,6 @@ public class Task {
     public Task accessHistory(Task task, User user){
         return accessHistory(task, user);
     }
-
+*/
     
 }
