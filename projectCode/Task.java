@@ -25,12 +25,46 @@ public class Task {
         return newTask(taskName, description, assignedUser, document, taskType);
     }
 
+    //Basic getters
+    public String getName(){
+        return taskName;
+    }
+    public String getDescription(){
+        return description;
+    }
+    public User getAssignedUser(){
+        return assignedUser;
+    }
+    public Date getDate(){
+        return date;
+    }
+
+    //is not included ??? 
+    //Adding here to satisfy DataWriter
+    public String getDueDate(){
+        return null;
+    }
+    public String getDocument(){
+        return document;
+    }
+    public TaskType getTaskType(){
+        return taskType;
+    }
+    public ArrayList<Comment> getComments(){
+        return comments;
+    }
+
+
+
     /* 
     //Taking out this method
     public void addPoint(User user){
 
     }
     */
+
+
+
     
     public Columns changeColumn(Columns columnFrom, Columns columnsTo, Task task){
         
@@ -64,4 +98,7 @@ public class Task {
     }
 */
     
+
+
+
 }
