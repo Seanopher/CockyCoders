@@ -11,7 +11,7 @@ public class User {
     private String password;
     private UserType userType;
     private ArrayList<Project> projects;
-    protected ArrayList<User> users;
+    protected UserList userList;
     
 
 
