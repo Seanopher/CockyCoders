@@ -7,7 +7,7 @@ import java.util.UUID;
 import java.io.IOException;
 import java.io.FileWriter;
 import org.json.simple.JSONObject;
-
+import java.util.HashMap;
 
 public class Task {
     protected UUID taskID;
@@ -66,13 +66,17 @@ public class Task {
 
 
     
-    public Columns changeColumn(Columns columnFrom, Columns columnsTo, Task task){
-        if (columnFrom.contains(task)) {
+    public Columns changeColumn(Columns columnFrom, Columns columnsTo, Task task, Columns title){
+        if (columnFrom.hash_map.containsKey(task)) {
+
+            task.put(columnFrom, column.get(columnsTo));
+            //task.put(columnTo, column.put() );
+
             // Remove the task from the source column
-            columnFrom.remove(task);
+            //columnFrom.remove(task);
     
             // Add the task to the destination column (columnTo)
-            columnsTo.add(task);
+            //columnsTo.add(task);
         }
         //return changeColumn(columnFrom, columnsTo, task);
         else 
