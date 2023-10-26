@@ -67,10 +67,19 @@ public class Task {
 
     
     public Columns changeColumn(Columns columnFrom, Columns columnsTo, Task task){
-        
+        if (columnFrom.contains(task)) {
+            // Remove the task from the source column
+            columnFrom.remove(task);
+    
+            // Add the task to the destination column (columnTo)
+            columnsTo.add(task);
+        }
         //return changeColumn(columnFrom, columnsTo, task);
-
-    }
+        else 
+            return changeColumn(columnsTo, columnsTo, task);
+    } 
+    
+    
 
     //changed to a void (was String) to only change 
     public void comment(String comment){
