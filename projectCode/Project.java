@@ -13,8 +13,10 @@ public class Project
     private static Project project;
     
 
-
-    public Project(String name, UUID projectID, UserList users)
+    /*
+     * Takes in name, project id, and a userlist, just a default constructor
+     */
+    public Project(String name, String projectID, UserList users)
     {
         if(name != null && projectID != null && users != null)
         {
@@ -23,14 +25,27 @@ public class Project
             this.users = UserList.getInstance();
         }
     }
-    public boolean saveProject(Project project){
-        return DataWriter.saveProject();
-    }
-    public static getInstance(String name, String projectID, UserList users){
+
+    /*
+     * Takes in a name, projectID, and users
+     */
+    public static Project getInstance(String name, String projectID, UserList users){
         if(project == null){
-            project = new Project();
+            project = new Project(name, projectID, users);
+            return project;
         }
+        return null;
     }
+
+    public String getName(){
+        return name;
+    }
+
+    public String getpID(){
+        return pID;
+    }
+
+
     
     
 }   
