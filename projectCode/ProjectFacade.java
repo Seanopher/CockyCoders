@@ -54,10 +54,6 @@ public class ProjectFacade {
         return addComment(comment, user, task);
     }
 
-    public void addPoint(User user){
-
-    }
-
     public Columns changeColumn(Columns columnFrom, Columns columnsTo){
         return changeColumn(columnFrom, columnsTo);
     }
