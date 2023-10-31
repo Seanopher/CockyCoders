@@ -9,11 +9,11 @@ import org.json.simple.JSONObject;
 
 public class DataWriter extends DataConstants{
     public boolean saveUsers(){
-        User users = User.getInstance();
-		ArrayList<User> addUsers = users.getUser();
+        UserList users = UserList.getInstance();
+		UserList.getUsers();
 		JSONArray jsonUsers = new JSONArray();
 		
-		//creating all the json objects
+		//Creating all the JSON 
 		for(int i=0; i< addUsers.size(); i++) {
 			jsonUsers.add(getUserJSON(addUsers.get(i)));
 		}
@@ -52,7 +52,7 @@ public class DataWriter extends DataConstants{
 
     public boolean saveProject(){
         Project projects = Project.getInstance();
-		ArrayList<User> addProject = projects.getProject();
+		ArrayList<Project> addProject = projects.getProject();
 		JSONArray jsonProjects = new JSONArray();
 		
 		//creating all the json objects
@@ -97,9 +97,9 @@ public class DataWriter extends DataConstants{
     public static JSONObject getProjectJSON(Project project) {
 		JSONObject projectDetails = new JSONObject();
 
-		projectDetails.put(PROJECT_NAME, project.getFirstName());
-		projectDetails.put(PROJECT_USERS, project.getLastName());
-		projectDetails.put(PROJECT_COLUMNS, project.getUsername());
+		projectDetails.put(PROJECT_NAME, project.getProjectName());
+		projectDetails.put(PROJECT_USERS, project.getUsers());
+		projectDetails.put(PROJECT_COLUMNS, project.getColumns());
         
         return projectDetails;
 	}
@@ -116,6 +116,17 @@ public class DataWriter extends DataConstants{
 		taskDetails.put(TASK_TYPE, task.getTaskType());
         taskDetails.put(TASK_COMMENTS, task.getComments());
         taskDetails.put(TASK_HISTORY, task.getHistory());
+
+        // Add these values for Class: Task, for the "save" method.
+        // Since the above do not encompass all of the varibles in the Task
+        // Class. 
+        // Need help with making these
+        /* 
+        taskDetails.put("taskID", task.taskID.toString());
+        taskDetails.put("taskName", task.taskName);
+        taskDetails.put("description", task.description);
+        taskDetails.put("assignedUser", task.assignedUser.getUsername());
+        */
         
         return taskDetails;
 	}

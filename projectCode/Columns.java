@@ -1,6 +1,13 @@
 package projectCode;
 import java.util.ArrayList;
+<<<<<<< HEAD
+public class Columns {
+    public ArrayList<Task> column;
+    public String title;
+    public ArrayList<String> titles;
+=======
 import java.util.HashMap;
+>>>>>>> peyton
 
 /**
  * @author EmmaLee Peyton
@@ -28,30 +35,7 @@ public class Columns {
         columns.column.put(title, taskList);
         return columns;
     }
-
-    /**
-     * 
-     * @param columns
-     * @param title
-     * @return
-     */
-    public Columns removeColumn(Columns columns, String title){
-        columns.column.remove(title);
-        return columns;
+    public Columns removeColumn(Columns column, String title){
+        return column;
     }
-
-    /**
-     * 
-     * @param columns
-     * @param title
-     * @return
-     */
-    public Columns moveColumn(Columns columns, String title){
-        String oldTitle = title;
-        ArrayList<TaskList> taskList = columns.column.get(oldTitle);
-        columns.column.remove(oldTitle);
-        columns.column.put(title, taskList);
-        return columns;
-    }
-    
 }
