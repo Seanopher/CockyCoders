@@ -1,33 +1,56 @@
 package projectCode;
 import java.util.ArrayList;
+import java.util.UUID;
 public class ProjectFacade {
     private User user;
     private UserList userList;
     private TaskList taskList;
     private Project project;
 
-    public User login(String userName, String password){
-        return login(userName, password);
+    /* login method to check if user is valid user via username & password */
+    public boolean login(String userName, String password)
+    {
+        if(userName != null && password !=null)
+        {
+            if(userList.login(userName, password)!=null)
+            {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+    
     }
-    public boolean Logout(User user){
+
+    public boolean Logout(User user)
+    {
         return true;
 
     }
-
-    public User createUser(String firstName, String lastName, String userName, String password, int userId){
-        return createUser(firstName, lastName, userName, password, userId);
+    /* utilizes user class to create new user */
+    public User createUser(UUID userID, String firstName, String lastName, String password, String username, UserType userType)
+    {
+        if(userID != null && firstName != null && lastName != null && password != null && userType != null)
+        {
+            return user.newUser(userID, firstName, lastName, password, username, userType);
+        }
+        else
+            return null;
     }
+
     public Project project(String name){
         return project(name);
 
     }
 
-    public Project joinProject(Project project){
-        return project;
+    public boolean joinProject(Project project){
     }
 
-    public void leaveProject(Project project){
-
+    public boolean leaveProject(Project project){
     }
 
     public void removePermission(User user, UserType type){
