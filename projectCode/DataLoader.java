@@ -9,32 +9,32 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;;
 
 public class DataLoader extends DataConstants{
-    public boolean loadUsers(){
+    public ArrayList<User> loadUsers(){
         ArrayList<User> users = new ArrayList<User>();
-
+        
         try{
             FileReader reader = new FileReader(USER_FILE_NAME);
-            JSONParser parser = new JSONParser();
             JSONArray usersJSON = (JSONArray)new JSONParser().parse(reader);
 
             for(int i=0; i < usersJSON.size(); i++) {
 				JSONObject userJSON = (JSONObject)usersJSON.get(i);
+                
 				String firstName = (String)userJSON.get(USER_FIRST_NAME);
 				String lastName = (String)userJSON.get(USER_LAST_NAME);
-                String userID = (String)userJSON.get(USERID);
-                UUID UUID = UUID.fromString(userID);
+                String userID = (String)userJSON.get(USER);
 				String password = (String)userJSON.get(USER_PASSWORD);
                 String username = (String)userJSON.get(USER_USERNAME);
 				String userType = (String)userJSON.get(USER_USERTYPE);
                 String projects = (String)userJSON.get(USER_PROJECTS);
-				
-				users.add(new User(userID, firstName, lastName, password, userType));
+
+				User user = new User(userID, firstName, lastName, password, username, userType);
+				users.add(user);
+                return users;
 			} //String userID, String firstName, String lastName, String password, UserType userType
-            return true;
         } catch (Exception e) {
 			e.printStackTrace();
         }
-        return false;
+        return null;
     }
 
 

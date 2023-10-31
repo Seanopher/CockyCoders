@@ -10,7 +10,9 @@ import org.json.simple.JSONObject;
 public class DataWriter extends DataConstants{
     public boolean saveUsers(){
         UserList users = UserList.getInstance();
-		UserList.getUsers();
+		
+
+
 		JSONArray jsonUsers = new JSONArray();
 		
 		//Creating all the JSON 

@@ -9,7 +9,7 @@ public class User {
     private String username;
     private String userID;
     private String password;
-    private UserType userType;
+    private String userType;
     private ArrayList<Project> projects;
     protected UserList userList;
     
@@ -20,7 +20,7 @@ public class User {
          * creates a new user takes in a UUID, their firstname, their lastName, their password, 
          * and their user type, use when need to make a new user
          */
-    public User newUser(UUID userID, String firstName, String lastName, String password, String username, UserType userType)
+    public User newUser(UUID userID, String firstName, String lastName, String password, String username, String userType)
     {
         if(userID != null && firstName != null && lastName != null && password != null && userType != null)
         {
@@ -41,7 +41,7 @@ public class User {
      * takes in their UUID, firstname, lastName, password, 
          * and user type
      */
-    public User(String userID, String firstName, String lastName, String password, String username, UserType userType)
+    public User(String userID, String firstName, String lastName, String password, String username, String userType)
     {
         if(userID != null && firstName != null && lastName != null && password != null && userType != null)
         {
@@ -59,11 +59,11 @@ public class User {
     public User getUser(UUID userID)
     {
         String userUUIDtoString = userID.toString(); //changes the UUID into a String
-        for (User user : users)
+        for (User users : UserList.getInstance())
         {
-            if (user.getUUID().equals(userUUIDtoString)) //checks if userId matches
+            if (users.getUUID().equals(userUUIDtoString)) //checks if userId matches
             {
-                return user; //returns a user matching the userUUID
+                return users; //returns a user matching the userUUID
             }
         }
             /*
@@ -91,7 +91,7 @@ public class User {
         return password;
     }
     
-    public UserType getUserType()
+    public String getUserType()
     {
         return userType;
     }
