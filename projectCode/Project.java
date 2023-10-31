@@ -37,31 +37,24 @@ public class Project
         return null;
     }
 
-    public String getName(){
+
+
+    //Basic getters
+    public String getProjectName(){
         return name;
     }
 
-    public String getpID(){
+    public String getProjectID(){
         return pID;
     }
 
 
-    
-    
-
-
-//Basic getters
-public String getProjectName(){
-    return name;
-}
-
-
 //These bottom two are set to null as placeholders 
-public ArrayList<User> getUsers() {
-    return users;
-}
-public String getColumns(){
-    return null;//columns;
-}
+    public UserList getUsers() {
+        return users;
+    }
+    public String getColumns(){
+        return null;//columns;
+    }
  
 }   
