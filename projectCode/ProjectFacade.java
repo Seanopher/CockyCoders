@@ -32,7 +32,7 @@ public class ProjectFacade {
 
     }
     /* utilizes user class to create new user */
-    public User createUser(UUID userID, String firstName, String lastName, String password, String username, UserType userType)
+    public User createUser(UUID userID, String firstName, String lastName, String password, String username, String userType)
     {
         if(userID != null && firstName != null && lastName != null && password != null && userType != null)
         {
@@ -42,28 +42,50 @@ public class ProjectFacade {
             return null;
     }
 
-    public Project project(String name){
-        return project(name);
-
+    /* changes user type */
+    public boolean changeType(User user)
+    {
+        if(user!=null)
+        {
+            if(user.changeType(user)==true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+            return false;
     }
 
-    public boolean joinProject(Project project){
-    }
-
-    public boolean leaveProject(Project project){
-    }
-
-    public void removePermission(User user, UserType type){
-
-    }
-
-    public void addPermission(User user, UserType type){
+    public Project project(String projectID){
+        return project(projectID);
 
     }
     
-    public Task newTask(Task task){
-        return newTask(task);
+    /* adds user to project */
+    public boolean joinProject(Project project)
+    {
+        if(user.joinProject(project)==true)
+        {
+            return true;
+        }
+        else
+            return false;
     }
+    /* removes user from project */
+    public boolean leaveProject(Project project)
+    {
+        if(user.leaveProject(project)==true)
+        {
+            return true;
+        }
+        else 
+            return false;
+    }
+    
 
     public Columns createColumn(Columns column, String title){
         return column;
@@ -73,24 +95,26 @@ public class ProjectFacade {
         return column;
     }
     
-    public Comment addComment(String comment, User user, Task task){
-        return addComment(comment, user, task);
-    }
 
     public Columns changeColumn(Columns columnFrom, Columns columnsTo){
         return changeColumn(columnFrom, columnsTo);
     }
 
-    public String comment(String comment){
-        return comment;
+    public Task newTask(Task task){
+        
+        return newTask(task);
+    }
+
+    public Task newTask(String taskName, String description, String assignedUser, String document, TaskType type)
+    {
+
+    }
+
+    public Comment addComment(String comment, User user, Task task){
+        return addComment(comment, user, task);
     }
 
     public Task save(Task task){
         return save(task);
     }
-
-    public Task accessHistory(Task task, User user){
-        return accessHistory(task, user);
-    }
-
 }
