@@ -26,6 +26,7 @@ public class ProjectFacade {
     
     }
 
+    /* not sure how to logout */
     public boolean Logout(User user)
     {
         return true;
@@ -60,6 +61,7 @@ public class ProjectFacade {
             return false;
     }
 
+    /* not sure what this method is for? */
     public Project project(String projectID){
         return project(projectID);
 
@@ -86,18 +88,32 @@ public class ProjectFacade {
             return false;
     }
     
-
-    public Columns createColumn(Columns column, String title){
-        return column;
+    /* creates new colun */
+    public Columns createColumn(Columns column, String title)
+    {
+        if(column != null && title != null)
+        {
+            return column.createColumn(column, title);
+        }
+        else
+            return null;
+        
     }
-
-    public Columns removeColumn(Columns column, String title){
-        return column;
+    /* removes pre-existing column */
+    public void removeColumn(Columns column, String title)
+    {
+        if(column != null && title !=null )
+        {
+            column.removeColumn(column, title);
+        }
     }
     
-
-    public Columns changeColumn(Columns columnFrom, Columns columnsTo){
-        return changeColumn(columnFrom, columnsTo);
+    /* changes tasks location in columns */
+    public Columns changeColumn(Columns columnFrom, Columns columnsTo, Task task){
+        if(columnFrom != null && columnsTo != null && task != null)
+            return columnFrom.changeColumn(columnFrom, columnsTo, task);
+        else
+            return null;
     }
 
     public Task newTask(Task task){
@@ -107,7 +123,7 @@ public class ProjectFacade {
 
     public Task newTask(String taskName, String description, String assignedUser, String document, TaskType type)
     {
-
+        return 
     }
 
     public Comment addComment(String comment, User user, Task task){
