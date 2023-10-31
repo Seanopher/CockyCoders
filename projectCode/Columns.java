@@ -1,13 +1,6 @@
 package projectCode;
 import java.util.ArrayList;
-<<<<<<< HEAD
-public class Columns {
-    public ArrayList<Task> column;
-    public String title;
-    public ArrayList<String> titles;
-=======
 import java.util.HashMap;
->>>>>>> peyton
 
 /**
  * @author EmmaLee Peyton
