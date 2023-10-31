@@ -1,4 +1,5 @@
 package projectCode;
+import java.sql.Array;
 import java.util.ArrayList;
 
 /**
@@ -8,9 +9,15 @@ import java.util.ArrayList;
  */
 public class Columns {
 
-    public ArrayList<Task> column;
-    public String title;
-    public ArrayList<String> titles;
+    private ArrayList<Task> column;
+    private String title;
+    private ArrayList<String> titles;
+
+    public Columns(String title) {
+        this.column = new ArrayList<>();
+        this.title = title;
+        this.titles = new ArrayList<>();
+    }
 
     public Columns createColumn(Columns column, String title){
         // checks to see if the title exists
@@ -18,11 +25,16 @@ public class Columns {
         // if "title + "(num)" exists title = "title" + "(num + 1)"
 
         if(titles.contains(title)){
-            while(title.contains(title)){
-                int i = 1;
-                title
-            }
+            int i = 1;
+            while(title.contains(title))
+                i++;
+            title = title + "(" + i + ")";
         }
+        // creates new column named title and adds title to the titles arraylist
+        Columns newColumn = new Columns(title);
+
+        // adds column to columns list
+        titles.add(title);
 
         return column;
     }
