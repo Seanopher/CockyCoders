@@ -65,6 +65,7 @@ public class User {
     {
         return password;
     }
+    
     public UserType getUserType()
     {
         return userType;

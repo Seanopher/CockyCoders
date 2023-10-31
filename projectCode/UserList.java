@@ -45,21 +45,25 @@ public class UserList {
      * logs in user by calling DataLoader for Users and
      * searching list for specific User
      */
-    public User login(String firstName, String lastName, String password)
+    public User login(String userName, String password)
     {
         DataLoader dataLoader = new DataLoader();
+        
         users = dataLoader.loadUsers(); //loads the users in dataLoader
+        
        try
        {
             /*
-            * Searches Users using their firstName, lastName, and password and UUID
+            * Searches Users using their username and password 
+            * Returns the user if found 
             */
             for(User user: users)
             {
-                if(user.getFirstName().equals(firstName) & user.getLastName().equals(lastName) &user.getPassword().equals(password))
+                if(user.getUsername().equals(userName) & user.getPassword().equals(password))
                 {
-                    UUID userId = UUID.fromString(user.getUUID()); //gets the userId from User class
-                    User loggedInUser = getUser(userId); //uses the userId to call the getUser method and gets the correct user
+                    String UUID = user.getUUID();
+                    String uuidString = UUID.toString();
+                    User loggedInUser = User(userName); //uses the userId to call the getUser method and gets the correct user
                     return loggedInUser;
                 }
             }

@@ -9,11 +9,11 @@ import org.json.simple.JSONObject;
 
 public class DataWriter extends DataConstants{
     public boolean saveUsers(){
-        User users = User.getInstance();
-		ArrayList<User> addUsers = users.getUser();
+        UserList users = UserList.getInstance();
+		UserList.getUsers();
 		JSONArray jsonUsers = new JSONArray();
 		
-		//creating all the json objects
+		//Creating all the JSON 
 		for(int i=0; i< addUsers.size(); i++) {
 			jsonUsers.add(getUserJSON(addUsers.get(i)));
 		}
@@ -52,7 +52,7 @@ public class DataWriter extends DataConstants{
 
     public boolean saveProject(){
         Project projects = Project.getInstance();
-		ArrayList<User> addProject = projects.getProject();
+		ArrayList<Project> addProject = projects.getProject();
 		JSONArray jsonProjects = new JSONArray();
 		
 		//creating all the json objects
