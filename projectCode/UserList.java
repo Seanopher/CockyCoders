@@ -7,7 +7,7 @@ public class UserList {
 
     private UserList()
     {
-        users = new ArrayList<>();
+        users = 
     }
 
 
@@ -48,7 +48,6 @@ public class UserList {
     public User login(String userName, String password)
     {
         DataLoader dataLoader = new DataLoader();
-        
         users = dataLoader.loadUsers(); //loads the users in dataLoader
         
        try
@@ -61,10 +60,7 @@ public class UserList {
             {
                 if(user.getUsername().equals(userName) & user.getPassword().equals(password))
                 {
-                    String UUID = user.getUUID();
-                    String uuidString = UUID.toString();
-                    User loggedInUser = User(userName); //uses the userId to call the getUser method and gets the correct user
-                    return loggedInUser;
+                    return user;
                 }
             }
         }
