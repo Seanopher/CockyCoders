@@ -1,13 +1,5 @@
 package projectCode;
 import java.util.ArrayList;
-<<<<<<< HEAD
-public class Columns {
-    public ArrayList<Task> column;
-    public String title;
-    public ArrayList<String> titles;
-=======
-import java.util.HashMap;
->>>>>>> peyton
 
 /**
  * @author EmmaLee Peyton
@@ -16,26 +8,33 @@ import java.util.HashMap;
  */
 public class Columns {
 
-    private HashMap<String, ArrayList<TaskList>> column = new HashMap<String, ArrayList<TaskList>>();
+    public ArrayList<Task> column;
+    public String title;
+    public ArrayList<String> titles;
 
-    /**
-     * 
-     * @param columns
-     * @param title
-     * @return
-     * 
-     */
-    public Columns createColumn(Columns columns, String title){
-        if (columns.column.containsKey(title)){
-            int i = 1;
-            while (columns.column.containsKey(title + "(" + i + ")"))
-                i++;
+    public Columns createColumn(Columns column, String title){
+        // checks to see if the title exists
+        // if exists, adds "(num)"
+        // if "title + "(num)" exists title = "title" + "(num + 1)"
+
+        if(titles.contains(title)){
+            while(title.contains(title)){
+                int i = 1;
+                title
+            }
         }
-        ArrayList<TaskList> taskList = new ArrayList<>();
-        columns.column.put(title, taskList);
-        return columns;
-    }
-    public Columns removeColumn(Columns column, String title){
+
         return column;
     }
+
+    public Columns removeColumn(Columns column, String title){
+        // finds the title and deletes the column
+        return column;
+    }
+
+    public Columns moveColumn(Columns column, String title){
+        
+        return column;
+    }
+    
 }
