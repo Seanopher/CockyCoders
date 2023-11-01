@@ -68,7 +68,7 @@ public class ProjectFacade {
     }
     
     /* adds user to project */
-    public boolean joinProject(Project project)
+    public boolean joinProject(Project project, User user)
     {
         if(user.joinProject(project)==true)
         {
@@ -78,7 +78,7 @@ public class ProjectFacade {
             return false;
     }
     /* removes user from project */
-    public boolean leaveProject(Project project)
+    public boolean leaveProject(Project project, User user)
     {
         if(user.leaveProject(project)==true)
         {
@@ -121,9 +121,10 @@ public class ProjectFacade {
         return newTask(task);
     }
 
-    public Task newTask(String taskName, String description, String assignedUser, String document, TaskType type)
-    {
-        return 
+    public boolean addTask(Columns column, Task task){
+        column.addTasks(task);
+        
+        
     }
 
     public Comment addComment(String comment, User user, Task task){

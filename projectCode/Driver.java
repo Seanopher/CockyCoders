@@ -34,7 +34,7 @@ public class Driver {
         facade.joinProject(electric_Missles);
         facade.joinProject(soap_Free_Washers);
         facade.joinProject(air_Computers);
-        
+        Task initialize = new Task();
         facade.addTask("Initialize super algorithm to detonate at warp speed.", " Description", "Jeff Goldblum", "Document", TaskType.CODE);
         
     }
