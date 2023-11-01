@@ -8,6 +8,7 @@ public abstract class DataConstants {
     protected static final String USER_USERNAME = "username";
     protected static final String USER_PASSWORD = "password";
     protected static final String USER_USERTYPE = "userType";
+    protected static final String USER_PROJECTS = "projects";
 
     protected static final String TASK_FILE_NAME = "Task.json";
     protected static final String TASK_NAME = "taskName";
@@ -17,7 +18,7 @@ public abstract class DataConstants {
     protected static final String TASK_DOCUMENT = "document";
     protected static final String TASK_TYPE = "taskType";
     protected static final String TASK_COMMENTS = "comments";
-    //protected static final String TASK_HISTORY = "history"; idk
+    //protected static final String TASK_HISTORY = "history";
 
     protected static final String PROJECT_FILE_NAME = "Project.json";
     protected static final String PROJECT_NAME = "name";

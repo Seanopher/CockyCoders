@@ -4,10 +4,16 @@ import java.util.UUID;
 public class UserList {
     private static UserList userList;
     private ArrayList<User> users;
+    private DataLoader dataLoader;
 
+    /*
+     * calls DataLoader to load the Arraylist
+     * returns an ArrayList from loadUsers
+     */
     private UserList()
     {
-        users = 
+        dataLoader = new DataLoader(); 
+        users = dataLoader.loadUsers();
     }
 
 
