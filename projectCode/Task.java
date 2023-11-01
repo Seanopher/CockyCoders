@@ -61,64 +61,10 @@ public class Task {
     public ArrayList<Comment> getComments(){
         return comments;
     }
-    /* 
-    //Taking out this method
-    public void addPoint(User user){
-
-    }
-    */
-    public Columns changeColumn(Columns columnFrom, Columns columnsTo, Task task, Columns title){
-        if (columnFrom.containsKey(task)) {
-
-            if (board.containsKey(fromColumn) && board.containsKey(toColumn)) {
-                List<Task> sourceColumn = board.get(fromColumn);
-                List<Task> destinationColumn = board.get(toColumn);
-        
-                if (sourceColumn.contains(task)) {
-                    sourceColumn.remove(task);
-                    destinationColumn.add(task);
-                }
-
-            //task.put(columnFrom, column.get(columnsTo));
-            //task.put(columnTo, column.put() );
-
-            // Remove the task from the source column
-            //columnFrom.remove(task);
     
-            // Add the task to the destination column (columnTo)
-            //columnsTo.add(task);
-        
-        //return changeColumn(columnFrom, columnsTo, task);
-        else 
-            return changeColumn(columnsTo, columnsTo, task);
-    } 
     //changed to a void (was String) to only change 
     public void comment(String comment){
         Comment newComment = new Comment();
         comments.add(newComment);
     }
-
-/* 
-//These methods might be impemented later 
-
-    // changed to void from "Task". 
-    public void save(Task task){
-        JSONObject taskJSON = DataWriter.getTaskJSON(this);
-
-        try (FileWriter file = new FileWriter(DataConstants.TASK_FILE_NAME)) {
-            file.write(taskJSON.toJSONString());
-            file.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public Task accessHistory(Task task, User user){
-        return accessHistory(task, user);
-    }
-*/
-    
-
-
-
 }
