@@ -59,7 +59,11 @@ public class Columns {
     }
 
 
-    public Columns addTasks(Task task){
-        return this;
+    public boolean addTasks(Task task){
+        if(task !=null){
+        tasks.add(task);
+        return true;
+        }
+        return false;
     }
 }
