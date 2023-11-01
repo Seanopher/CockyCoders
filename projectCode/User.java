@@ -125,12 +125,12 @@ public class User {
      */
     public boolean changeType(User user)
     {
-        if(user.userType == UserType.ADMIN){
-            user.userType = UserType.USER;
+        if(user.userType.equalsIgnoreCase("admin")){
+            user.userType = "user";
             return true;
         }
-        else if(user.userType == UserType.USER){
-            user.userType = UserType.ADMIN;
+        else if(user.userType.equalsIgnoreCase("user")){
+            user.userType = "admin";
             return true;
         }
         return false;
