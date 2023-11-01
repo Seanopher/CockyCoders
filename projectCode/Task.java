@@ -1,15 +1,11 @@
 package projectCode;
 import java.util.ArrayList;
-//add the built in date function
 import java.util.Date;
 import java.util.UUID;
-//added more imports statements
-import java.io.IOException;
-import java.io.FileWriter;
-import org.json.simple.JSONObject;
-import java.util.HashMap;
-import java.util.List;
-
+/**
+ * @author Hughes
+ * Creates the object task and assigns user varibles to the task
+ */
 public class Task {
     protected UUID taskID;
     public String taskName;
@@ -21,7 +17,15 @@ public class Task {
     public ArrayList<Comment> comments;
     public TaskType taskType;
     private ArrayList<Task> history;
-
+    /**
+     * Creates a new task
+     * @param taskName The name of the task
+     * @param description The descriotion that will be held by task
+     * @param assignedUser The user that is being assigned the task
+     * @param document The document being used by task
+     * @param taskType The type of the task, so it can be idenified by the user
+     * @return a new task
+     */
     public Task newTask(String taskName, String description, User assignedUser, String document, TaskType taskType){
         if ( taskName != null && description != null && assignedUser != null && document != null && taskType != null){
             this.taskName = taskName;
@@ -29,6 +33,7 @@ public class Task {
             this.assignedUser = assignedUser;
             this.document = document;
             this.taskType = taskType;
+            this.comments = new ArrayList<>();
             return newTask(taskName, description, assignedUser, document, taskType);
         }
         return null;
@@ -46,8 +51,6 @@ public class Task {
     public Date getDate(){
         return date;
     }
-
-    //is not included ??? 
     //Adding here to satisfy DataWriter
     public String getDueDate(){
         return null;
@@ -61,64 +64,11 @@ public class Task {
     public ArrayList<Comment> getComments(){
         return comments;
     }
-    /* 
-    //Taking out this method
-    public void addPoint(User user){
-
-    }
+    /** 
+    * changed to a void (was String) to only change
+    * @param Comment uses comment to call the class and method
     */
-    public Columns changeColumn(Columns columnFrom, Columns columnsTo, Task task, Columns title){
-        if (columnFrom.containsKey(task)) {
-
-            if (board.containsKey(fromColumn) && board.containsKey(toColumn)) {
-                List<Task> sourceColumn = board.get(fromColumn);
-                List<Task> destinationColumn = board.get(toColumn);
-        
-                if (sourceColumn.contains(task)) {
-                    sourceColumn.remove(task);
-                    destinationColumn.add(task);
-                }
-
-            //task.put(columnFrom, column.get(columnsTo));
-            //task.put(columnTo, column.put() );
-
-            // Remove the task from the source column
-            //columnFrom.remove(task);
-    
-            // Add the task to the destination column (columnTo)
-            //columnsTo.add(task);
-        
-        //return changeColumn(columnFrom, columnsTo, task);
-        else 
-            return changeColumn(columnsTo, columnsTo, task);
-    } 
-    //changed to a void (was String) to only change 
-    public void comment(String comment){
-        Comment newComment = new Comment();
-        comments.add(newComment);
+    public void comment(Comment comment){
+        comments.add(comment);
     }
-
-/* 
-//These methods might be impemented later 
-
-    // changed to void from "Task". 
-    public void save(Task task){
-        JSONObject taskJSON = DataWriter.getTaskJSON(this);
-
-        try (FileWriter file = new FileWriter(DataConstants.TASK_FILE_NAME)) {
-            file.write(taskJSON.toJSONString());
-            file.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public Task accessHistory(Task task, User user){
-        return accessHistory(task, user);
-    }
-*/
-    
-
-
-
 }
