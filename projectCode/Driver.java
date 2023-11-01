@@ -31,9 +31,9 @@ public class Driver {
 
         System.out.println("Atticus Madden is logged in.");
 
-        facade.joinProject(electric_Missles);
-        facade.joinProject(soap_Free_Washers);
-        facade.joinProject(air_Computers);
+        facade.joinProject(electric_Missles, atticus);
+        facade.joinProject(soap_Free_Washers, atticus);
+        facade.joinProject(air_Computers, atticus);
         Task initialize = new Task();
         facade.addTask("Initialize super algorithm to detonate at warp speed.", " Description", "Jeff Goldblum", "Document", TaskType.CODE);
         
