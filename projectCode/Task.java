@@ -7,7 +7,6 @@ import java.util.UUID;
 import java.io.IOException;
 import java.io.FileWriter;
 import org.json.simple.JSONObject;
-import java.util.HashMap;
 import java.util.List;
 
 public class Task {
@@ -29,6 +28,7 @@ public class Task {
             this.assignedUser = assignedUser;
             this.document = document;
             this.taskType = taskType;
+            this.comments = new ArrayList<>();
             return newTask(taskName, description, assignedUser, document, taskType);
         }
         return null;
@@ -63,8 +63,7 @@ public class Task {
     }
     
     //changed to a void (was String) to only change 
-    public void comment(String comment){
-        Comment newComment = new Comment();
-        comments.add(newComment);
+    public void comment(Comment comment){
+        comments.add(comment);
     }
 }
