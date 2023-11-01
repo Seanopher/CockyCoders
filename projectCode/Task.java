@@ -38,7 +38,6 @@ public class Task {
     public Date getDate(){
         return date;
     }
-
     //is not included ??? 
     //Adding here to satisfy DataWriter
     public String getDueDate(){
@@ -53,19 +52,7 @@ public class Task {
     public ArrayList<Comment> getComments(){
         return comments;
     }
-
-
-
-    /* 
-    //Taking out this method
-    public void addPoint(User user){
-
-    }
-    */
-
-
-
-    
+    /*    
     public Columns changeColumn(Columns columnFrom, Columns columnsTo, Task task, Columns title){
         if (columnFrom.hash_map.containsKey(task)) {
 
@@ -83,35 +70,11 @@ public class Task {
             return changeColumn(columnsTo, columnsTo, task);
     } 
     
-    
-
+*/
     //changed to a void (was String) to only change 
     public void comment(String comment){
         Comment newComment = new Comment();
         comments.add(newComment);
     }
-
-/* 
-//These methods might be impemented later 
-
-    // changed to void from "Task". 
-    public void save(Task task){
-        JSONObject taskJSON = DataWriter.getTaskJSON(this);
-
-        try (FileWriter file = new FileWriter(DataConstants.TASK_FILE_NAME)) {
-            file.write(taskJSON.toJSONString());
-            file.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public Task accessHistory(Task task, User user){
-        return accessHistory(task, user);
-    }
-*/
-    
-
-
 
 }
