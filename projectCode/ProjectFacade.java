@@ -91,12 +91,13 @@ public class ProjectFacade {
     /* creates new colun */
     public Columns createColumn(Columns column, String title)
     {
-        if(column != null && title != null)
+        if(column!= null && title!=null)
         {
-            return column.createColumn(column, title);
+            return column.createColumn(title);
         }
         else
             return null;
+        
         
     }
     /* removes pre-existing column */
@@ -104,7 +105,7 @@ public class ProjectFacade {
     {
         if(column != null && title !=null )
         {
-            column.removeColumn(column, title);
+            column.removeColumn(title);
         }
     }
     
@@ -121,7 +122,8 @@ public class ProjectFacade {
         return newTask(task);
     }
 
-    public boolean addTask(Columns column, Task task){
+    public boolean addTask(Columns column, Task task)
+    {
         column.addTasks(task);
         
         
