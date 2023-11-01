@@ -7,7 +7,6 @@ import java.util.UUID;
 import java.io.IOException;
 import java.io.FileWriter;
 import org.json.simple.JSONObject;
-import java.util.HashMap;
 
 public class Task {
     protected UUID taskID;
@@ -21,10 +20,17 @@ public class Task {
     public TaskType taskType;
     private ArrayList<Task> history;
 
-    public Task newTask(String taskName, String description, String assignedUser, String document, Task taskType){
-        return newTask(taskName, description, assignedUser, document, taskType);
+    public Task newTask(String taskName, String description, User assignedUser, String document, TaskType taskType){
+        if ( taskName != null && description != null && assignedUser != null && document != null && taskType != null){
+            this.taskName = taskName;
+            this.description = description;
+            this.assignedUser = assignedUser;
+            this.document = document;
+            this.taskType = taskType;
+            return newTask(taskName, description, assignedUser, document, taskType);
+        }
+        return null;
     }
-
     //Basic getters
     public String getName(){
         return taskName;
@@ -52,25 +58,7 @@ public class Task {
     public ArrayList<Comment> getComments(){
         return comments;
     }
-    /*    
-    public Columns changeColumn(Columns columnFrom, Columns columnsTo, Task task, Columns title){
-        if (columnFrom.hash_map.containsKey(task)) {
-
-            task.put(columnFrom, column.get(columnsTo));
-            //task.put(columnTo, column.put() );
-
-            // Remove the task from the source column
-            //columnFrom.remove(task);
     
-            // Add the task to the destination column (columnTo)
-            //columnsTo.add(task);
-        }
-        //return changeColumn(columnFrom, columnsTo, task);
-        else 
-            return changeColumn(columnsTo, columnsTo, task);
-    } 
-    
-*/
     //changed to a void (was String) to only change 
     public void comment(String comment){
         Comment newComment = new Comment();
