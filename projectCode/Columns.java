@@ -66,4 +66,12 @@ public class Columns {
         }
         return false;
     }
+
+    public boolean removeTasks(Task task){
+        if(tasks.contains(task)){
+        tasks.remove(task);
+        return true;
+        }
+        return false;
+    }
 }
