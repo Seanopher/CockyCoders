@@ -1,11 +1,9 @@
 package projectCode;
-import java.sql.Array;
 import java.util.ArrayList;
 
 /**
  * @author EmmaLee Peyton
- * this class encases columns using a hashmap
- * it allows for the creation, removal, and the ability to move columns
+ * it allows for the creation and removal of columns
  */
 public class Columns {
 
@@ -13,40 +11,49 @@ public class Columns {
     private String title;
     private ArrayList<String> titles;
 
+    /**
+     * this is the parameter constructor method
+     * it takes in title for the arraylist that it wants
+     * @param title the parameter
+     */
     public Columns(String title) {
         this.column = new ArrayList<>();
         this.title = title;
         this.titles = new ArrayList<>();
     }
 
-    public Columns createColumn(Columns column, String title){
-        // checks to see if the title exists
-        // if exists, adds "(num)"
-        // if "title + "(num)" exists title = "title" + "(num + 1)"
-
-        if(titles.contains(title)){
+    /**
+     * it checks to see if the column exists
+     * if it exists it adds a number to the back of it
+     * 
+     * adds the new title to the array list of titles
+     * 
+     * @param title takes in user input and tests it
+     * @return the instance of this
+     */
+    public Columns createColumn(String title){
+        if(this.titles.contains(title)){
             int i = 1;
-            while(title.contains(title))
+            while(this.title.contains(title))
                 i++;
             title = title + "(" + i + ")";
         }
-        // creates new column named title and adds title to the titles arraylist
-        Columns newColumn = new Columns(title);
+        this.titles.add(title);
 
-        // adds column to columns list
-        titles.add(title);
-
-        return column;
+        return this;
     }
 
-    public Columns removeColumn(Columns column, String title){
-        // finds the title and deletes the column
-        return column;
+    /**
+     * finds the location of the column by its title name
+     * deletes the column
+     * @param title taken in from user to see if it exists then deletes it
+     * @return the instance of this
+     */
+    public Columns removeColumn(String title){
+        int loc = this.titles.indexOf(title);
+        this.titles.remove(loc);
+
+        return this;
     }
 
-    public Columns moveColumn(Columns column, String title){
-        
-        return column;
-    }
-    
 }
