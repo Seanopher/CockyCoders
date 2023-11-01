@@ -22,10 +22,10 @@ public class Driver {
     }
 
     public void run(){
-        secnario();
+        scenario();
     }
 
-    public void secnario(){
+    public void scenario(){
         System.out.println("************** Code Mission Possible **************");
         
 
@@ -35,7 +35,7 @@ public class Driver {
         facade.joinProject(soap_Free_Washers);
         facade.joinProject(air_Computers);
         
-
-
+        facade.addTask("Initialize super algorithm to detonate at warp speed.", " Description", "Jeff Goldblum", "Document", TaskType.CODE);
+        
     }
 }
