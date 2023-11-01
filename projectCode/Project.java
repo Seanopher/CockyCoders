@@ -18,12 +18,13 @@ public class Project
      */
     public Project(String name, String projectID, UserList users)
     {
-        if(name != null && projectID != null && users != null)
+        if(name != null && projectID != null)
         {
             this.name = name;
             this.pID = projectID.toString();
-            this.users = UserList.getInstance();
+            
         }
+        this.users = UserList.getInstance();
     }
 
     /*
