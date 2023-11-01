@@ -29,8 +29,8 @@ public class DataLoader extends DataConstants{
 
 				User user = new User(userID, firstName, lastName, password, username, userType);
 				users.add(user);
-                return users;
-			} //String userID, String firstName, String lastName, String password, UserType userType
+			} 
+            return users;
         } catch (Exception e) {
 			e.printStackTrace();
         }
@@ -39,27 +39,34 @@ public class DataLoader extends DataConstants{
 
 
     
-    public boolean loadProjects(){
+    public ArrayList<Project> loadProjects(){
         ArrayList<Project> projects = new ArrayList<Project>();
 
         try{
             FileReader reader = new FileReader(PROJECT_FILE_NAME);
-            JSONParser parser = new JSONParser();
             JSONArray projectsJSON = (JSONArray)new JSONParser().parse(reader);
 
             for(int i=0; i < projectsJSON.size(); i++) {
 				JSONObject projectJSON = (JSONObject)projectsJSON.get(i);
 				String name = (String)projectJSON.get(PROJECT_NAME);
-				String users = (String)projectJSON.get(PROJECT_USERS);
+
+				String userID = (String)projectJSON.get(PROJECT_USERS);
+                UUID userUUID = UUID.fromString(userID); 
+                UserList userList = UserList.getInstance();
+
+
 				String columns = (String)projectJSON.get(PROJECT_COLUMNS);
-				
-				projects.add(new Project(name, users, columns));
+               
+
+				//go through user list to find users based on userID and add them to an a arraylist 
+                //because users in project JSON is the userID
+				projects.add(new Project(name, userID, columns));
 			}
-            return true;
+            return projects;
         } catch (Exception e) {
 			e.printStackTrace();
         }
-        return false;
+        return null;
     }
 
     public boolean loadTasks(){
@@ -89,15 +96,5 @@ public class DataLoader extends DataConstants{
 			e.printStackTrace();
         }
         return false;
-    }
-
-    public boolean loadColumns(){
-        //do we need to load columns since we don't have a JSON file for it? 
-        return false;
-    }
-
-    public boolean loadComments(){
-        //do we need to load comments since we don't have a JSON file for it? 
-        return true;
     }
 }
