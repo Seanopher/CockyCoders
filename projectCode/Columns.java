@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Columns {
 
-    private ArrayList<Task> column;
+    private ArrayList<Task> tasks;
     private String title;
     private ArrayList<String> titles;
 
@@ -17,7 +17,7 @@ public class Columns {
      * @param title the parameter
      */
     public Columns(String title) {
-        this.column = new ArrayList<>();
+        this.tasks = new ArrayList<>();
         this.title = title;
         this.titles = new ArrayList<>();
     }
@@ -40,6 +40,8 @@ public class Columns {
         }
         this.titles.add(title);
 
+
+
         return this;
     }
 
@@ -56,4 +58,8 @@ public class Columns {
         return this;
     }
 
+
+    public Columns addTasks(Task task){
+        return this;
+    }
 }
