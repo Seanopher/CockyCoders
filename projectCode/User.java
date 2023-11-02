@@ -72,18 +72,6 @@ public class User {
      * takes in their UUID, firstname, lastName, password, 
          * and user type
      */
-    public User(String userID, String firstName, String lastName, String password, String username, String userType)
-    {
-        if(userID != null && firstName != null && lastName != null && password != null && userType != null)
-        {
-
-        this.userID = userID;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.password = password;
-        this.username = username;
-        }
-    }
      /**
      * Getters
      */
