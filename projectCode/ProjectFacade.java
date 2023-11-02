@@ -117,20 +117,29 @@ public class ProjectFacade {
             return null;
     }
 
-    public Task newTask(Task task){
-        
-        return newTask(task);
+    /* creates new task */
+    public Task newTask(String taskName, String description, User assignedUser, String document, TaskType taskType)
+    {
+        Task temp = new Task();
+        temp.newTask(taskName, description, assignedUser, document, taskType);
+        return temp;
     }
-
+    /* adds task to column */
     public boolean addTask(Columns column, Task task)
     {
-        column.addTasks(task);
-        
-        
+        if(column.addTasks(task)==true)
+        {
+            return true;
+        }
+        else
+            return false;
     }
 
-    public Comment addComment(String comment, User user, Task task){
-        return addComment(comment, user, task);
+    public Comment addComment(String comment, User user, String date, Task task)
+    {
+        Comment temp = new Comment(comment, user, date);
+        task.comment(temp);
+        return temp;
     }
 
     public Task save(Task task){
