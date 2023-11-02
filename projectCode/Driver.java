@@ -1,6 +1,7 @@
 package projectCode;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.UUID;
 
 public class Driver {
     private ProjectFacade facade;
@@ -35,7 +36,9 @@ public class Driver {
         facade.joinProject(soap_Free_Washers, atticus);
         facade.joinProject(air_Computers, atticus);
         Task initialize = new Task();
-        facade.addTask("Initialize super algorithm to detonate at warp speed.", " Description", "Jeff Goldblum", "Document", TaskType.CODE);
-        
+        User jeff = facade.createUser(UUID.randomUUID(), "John", "Goldblum", "Goldblum41", "JGoldblum", "USER");
+        initialize = facade.newTask("Initialize super algorithm to detonate at warp speed.", " Description", jeff, "Document", TaskType.CODE);
+        Date date = new Date();
+        facade.addComment("Avoid civilians Jeff!", jeff, date.toString(), initialize);
     }
 }
