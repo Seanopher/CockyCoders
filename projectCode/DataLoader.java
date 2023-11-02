@@ -60,12 +60,15 @@ public class DataLoader extends DataConstants{
                     String userID = (String)projectUserIDs.get(j);
                     UUID userUUID = UUID.fromString(userID); 
                     User user = userList.getUser(userUUID);
-                    
+
                     if(user != null){
                         users.add(user);
                     }
+
+
+
+                    
                 }
-                //users is the arraylist with users in it for project
                 
                 String columns = (String) projectJSON.get(PROJECT_COLUMNS);
 

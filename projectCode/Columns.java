@@ -65,8 +65,6 @@ public class Columns {
         }
         this.titles.add(title);
 
-
-
         return this;
     }
 
@@ -83,6 +81,13 @@ public class Columns {
         return this;
     }
 
+    /**
+     * moves task from one column to another
+     * @param columnFrom where the task is
+     * @param columnTo where they want to move the task to
+     * @param task the task they are moveing
+     * @return instance
+     */
     public Columns changeColumn(Columns columnFrom, Columns columnTo, Task task){
         int loc = columnFrom.getTasks().indexOf(task);
         columnTo.getTasks().add(task);
