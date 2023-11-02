@@ -56,51 +56,33 @@ public class User {
     /*
      * basic getters.
      */
-    public User getUser(UUID userID)
-    {
-        String userUUIDtoString = userID.toString(); //changes the UUID into a String
-        for (User users : UserList.getInstance())
-        {
-            if (users.getUUID().equals(userUUIDtoString)) //checks if userId matches
-            {
-                return users; //returns a user matching the userUUID
-            }
-        }
-            /*
-            * User is not found
-            */
-        return null;
+    public User getUser(UUID userID){
+        return userList.getUser(UUID);
     }
-    public String getUUID()
-    {
+    public String getUUID(){
         return userID;
     }
     public String getUsername(){
         return username;
     }
-    public String getFirstName()
-    {
+    public String getFirstName(){
         return firstName;
     }
-    public String getLastName()
-    {
+    public String getLastName(){
         return lastName;
     }
-    public String getPassword()
-    {
+    public String getPassword(){
         return password;
     }
     
-    public String getUserType()
-    {
+    public String getUserType(){
         return userType;
     }
     
     /*
      * takes in a project and adds it to the users ProjectList
      */
-    public boolean joinProject(Project project)
-    {
+    public boolean joinProject(Project project){
         if(project != null){
             projects.add(project);
             return true;
@@ -110,8 +92,7 @@ public class User {
     /*
      * takes in a project and removes it from the users projectList
      */
-    public boolean leaveProject(Project project)
-    {
+    public boolean leaveProject(Project project){
         for(int i = 0; i < projects.size(); i++){
             if(project.name.equalsIgnoreCase(projects.get(i).name)){
                 projects.remove(i);
@@ -123,8 +104,7 @@ public class User {
     /*
      * takes in a user and changes their type
      */
-    public boolean changeType(User user)
-    {
+    public boolean changeType(User user){
         if(user.userType.equalsIgnoreCase("admin")){
             user.userType = "user";
             return true;
@@ -134,5 +114,5 @@ public class User {
             return true;
         }
         return false;
-        }
+    }
 }
