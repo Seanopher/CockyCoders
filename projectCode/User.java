@@ -18,28 +18,6 @@ public class User {
     protected UserList userList;
 
     /**
-     * user constructor
-     * @param userID
-     * @param firstName
-     * @param lastName
-     * @param password
-     * @param username
-     * @param userType
-     */
-    public User(String userID, String firstName, String lastName, String password, String username, String userType)
-    {
-        if(userID != null && firstName != null && lastName != null && password != null && userType != null)
-        {
-
-        this.userID = userID;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.password = password;
-        this.username = username;
-        }
-    }
-
-    /**
      * creates a new user by taking in parameters
      * @param userID
      * @param firstName
@@ -66,11 +44,6 @@ public class User {
 
     }
     
-    /**
-     * Getters
-     */
-    public User getUser(UUID userID){
-        return userList.getUser(UUID);
     /*
      * method that you call when you have already created a user and are just looking to return the user.
      * takes in their UUID, firstname, lastName, password, 
@@ -88,24 +61,14 @@ public class User {
         this.username = username;
         }
     }
-    /*
-     * basic getters.
+     /**
+     * Getters
      */
-    public User getUser(UUID userID)
-    {
-        String userUUIDtoString = userID.toString(); //changes the UUID into a String
-        for (User users : userList)
-        {
-            if (users.getUUID().equals(userUUIDtoString)) //checks if userId matches
-            {
-                return users; //returns a user matching the userUUID
-            }
-        }
-            /*
-            * User is not found
-            */
-        return null;
+    public User getUser(UUID userID){
+        return userList.getUser(UUID);
     }
+
+
     public String getUUID(){
         return userID;
     }
