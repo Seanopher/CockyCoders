@@ -7,7 +7,7 @@ public class Project
     public String name;
     public String pID;
     protected UUID projectID;
-    protected UserList users;
+    protected ArrayList<User> users;
     protected ArrayList<Columns> column;
     protected HashMap<String, TaskList> columns;
     private static Project project;
@@ -16,7 +16,7 @@ public class Project
     /*
      * Takes in name, project id, and a userlist, just a default constructor
      */
-    public Project(String name, String projectID, UserList users)
+    public Project(String name, String projectID, ArrayList<User> users)
     {
         if(name != null && projectID != null)
         {
@@ -24,13 +24,13 @@ public class Project
             this.pID = projectID.toString();
             
         }
-        this.users = UserList.getInstance();
+        this.users = users;
     }
 
     /*
      * Takes in a name, projectID, and users
      */
-    public static Project getInstance(String name, String projectID, UserList users){
+    public static Project getInstance(String name, String projectID, ArrayList<User> users){
         if(project == null){
             project = new Project(name, projectID, users);
             return project;
