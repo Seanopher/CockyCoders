@@ -47,7 +47,7 @@ public class DataLoader extends DataConstants{
             JSONObject obj = (JSONObject) new JSONParser().parse(reader)
             JSONArray projectsJSON = (JSONArray)obj.get("Projects")
             UserList userList = UserList.getInstance();
-
+            ArrayList<User> users;
             for(Object object: projectsJSON) 
             {
 				JSONObject projectJSON = (JSONObject) object;
@@ -57,11 +57,15 @@ public class DataLoader extends DataConstants{
                 
                 JSONArray projectUserIDs = (JSONArray)projectJSON.get(PROJECT_USERS);
                 for(int j=0; j < projectUserIDs.size(); j++){
-                    String userID = (String)projectJSON.get(j);
+                    String userID = (String)projectUserIDs.get(j);
                     UUID userUUID = UUID.fromString(userID); 
                     User user = userList.getUser(userUUID);
+                    
+                    if(user != null){
+                        users.add(user);
+                    }
                 }
-                
+                //users is the arraylist with users in it for project
                 
                 String columns = (String) projectJSON.get(PROJECT_COLUMNS);
 
