@@ -4,7 +4,7 @@ import java.util.UUID;
 
 /** 
  * @author Cocky Coders
- * creates new user,
+ * creates new user, allowsusers in and out of projects, and sets the user type
  */
 public class User {
     private String firstName;
@@ -102,13 +102,11 @@ public class User {
         return false;
     }
 
-    /*
-     * takes in a project and removes it from the users projectList
-     */
     /**
-     * 
-     * @param project
-     * @return
+     * boolean that verifies if the user is a part of the project or not
+     * user leaves a project by removing it from their project list
+     * @param project user input
+     * @return true or false
      */
     public boolean leaveProject(Project project){
         for(int i = 0; i < projects.size(); i++){
@@ -119,9 +117,7 @@ public class User {
         }
         return false;
     }
-    /*
-     * takes in a user and changes their type
-     */
+    
     /**
      * changes a user type and returns a boolean
      * @param user user input
