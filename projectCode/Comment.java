@@ -41,4 +41,10 @@ public class Comment {
     public List<Comment> getComments() {
         return comments;
     }
+    public String getComment(){
+        return comment;
+    }
+    public String getUser(){
+        return user.getUsername();
+    }
 }

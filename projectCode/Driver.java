@@ -30,14 +30,19 @@ public class Driver {
         System.out.println("************** Code Mission Possible **************");
         
 
-        System.out.println("Atticus Madden is logged in.");
+        System.out.println(atticus.getFirstName() + " " + atticus.getLastName() + " is logged in");
+
 
         facade.joinProject(electric_Missles, atticus);
         facade.joinProject(soap_Free_Washers, atticus);
         facade.joinProject(air_Computers, atticus);
+        atticus.displayProjects(atticus);
         Columns toDo = new Columns("To-Do");
         Columns doing = new Columns("Doing");
         Columns done = new Columns("Done");
+        electric_Missles.addColumns(toDo);
+        electric_Missles.addColumns(doing);
+        electric_Missles.addColumns(done);
         facade.createColumn("To-Do");
         facade.createColumn("Doing");
         facade.createColumn("Done");
@@ -63,11 +68,18 @@ public class Driver {
         facade.createColumn("Abandoned");
         Columns abandoned = new Columns("Abandoned");
 
-        Task burger = new Task("Make impossible burger possible.", "Description", jeff, "Document", TaskType.CODE);
 
+
+
+        Task burger = new Task("Make impossible burger possible.", "Description", jeff, "Document", TaskType.CODE);
+        
+        burger.addComment("Hi", jeff, date);
+        burger.addComment("HI back", jeff, date);
+        burger.displayComments(burger);
         facade.addTask(toDo, burger);
         facade.changeColumn(toDo, abandoned, burger);
-
+        
+        electric_Missles.displayColumns();
 
         // System.out.println("ToDo - "+toDo.getTasks());
         try {

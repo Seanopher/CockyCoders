@@ -117,4 +117,12 @@ public class Columns {
         }
         return false;
     }
+
+    public void displayColumns(){
+        System.out.println(title + "\n");
+        for(int i = 0; i < tasks.size(); ++i)
+        {
+            System.out.println(tasks.get(i).getName() + ": "+ tasks.get(i).getDescription() + "\n");
+        }
+    }
 }

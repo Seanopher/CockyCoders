@@ -1,7 +1,6 @@
 package projectCode;
 import java.util.UUID;
 import java.util.ArrayList;
-import java.util.HashMap;
 public class Project 
 {
     public String name;
@@ -9,7 +8,6 @@ public class Project
     protected UUID projectID;
     protected ArrayList<User> users;
     protected ArrayList<Columns> column;
-    protected HashMap<String, TaskList> columns;
     private static Project project;
     
 
@@ -25,6 +23,7 @@ public class Project
             
         }
         this.users = users;
+        this.column = new ArrayList<Columns>();
     }
 
     /*
@@ -54,8 +53,31 @@ public class Project
     public ArrayList<User> getUsers() {
         return users;
     }
-    public String getColumns(){
-        return null;//columns;
+
+
+    public void displayUsers()
+    {
+        for(int i = 0; i < users.size(); ++i)
+        {
+            System.out.println(users.get(i).getUsername());
+        }
+    }
+    
+
+    public void addColumns(Columns newColumn)
+    {
+        column.add(newColumn);
+    }
+    public ArrayList<Columns> getColumns()
+    {
+        return column;
+    }
+    public void displayColumns()
+    {
+        for(int i = 0; i < column.size(); ++i)
+        {
+            column.get(i).displayColumns();
+        }
     }
  
 }   

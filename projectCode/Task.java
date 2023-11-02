@@ -88,4 +88,13 @@ public class Task {
     public void comment(Comment comment){
         comments.add(comment);
     }
+    public void addComment(String comment, User user, Date date) {
+        Comment newComment = new Comment(comment, user, date);
+        comments.add(newComment);
+    }
+    public void displayComments(Task task){
+        for(int i = 0; i < comments.size(); ++i){
+            System.out.println(comments.get(i).getComment());
+        }
+    }
 }

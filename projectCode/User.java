@@ -98,7 +98,15 @@ public class User {
     public String getUserType(){
         return userType;
     }
-    
+    public ArrayList<Project> getProjects(){
+        return projects;
+    }
+    public void displayProjects(User user){
+        for(int i = 0; i < user.getProjects().size(); ++i)
+        {
+            System.out.println(user.getProjects().get(i).getProjectName());
+        }
+    }
     /*
      * takes in a project and adds it to the users ProjectList
      */

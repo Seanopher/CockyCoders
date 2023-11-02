@@ -10,6 +10,9 @@ import java.util.UUID;
 public class ProjectFacade {
     private User user;
     private UserList userList;
+    private Columns column;
+    private Task task;
+    private Comment comment;
     private TaskList taskList;
     private Project project;
 
