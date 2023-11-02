@@ -91,12 +91,13 @@ public class ProjectFacade {
     /* creates new colun */
     public Columns createColumn(Columns column, String title)
     {
-        if(column != null && title != null)
+        if(column!= null && title!=null)
         {
-            return column.createColumn(column, title);
+            return column.createColumn(title);
         }
         else
             return null;
+        
         
     }
     /* removes pre-existing column */
@@ -104,7 +105,7 @@ public class ProjectFacade {
     {
         if(column != null && title !=null )
         {
-            column.removeColumn(column, title);
+            column.removeColumn(title);
         }
     }
     
@@ -116,19 +117,29 @@ public class ProjectFacade {
             return null;
     }
 
-    public Task newTask(Task task){
-        
-        return newTask(task);
+    /* creates new task */
+    public Task newTask(String taskName, String description, User assignedUser, String document, TaskType taskType)
+    {
+        Task temp = new Task();
+        temp.newTask(taskName, description, assignedUser, document, taskType);
+        return temp;
+    }
+    /* adds task to column */
+    public boolean addTask(Columns column, Task task)
+    {
+        if(column.addTasks(task)==true)
+        {
+            return true;
+        }
+        else
+            return false;
     }
 
-    public boolean addTask(Columns column, Task task){
-        column.addTasks(task);
-        
-        
-    }
-
-    public Comment addComment(String comment, User user, Task task){
-        return addComment(comment, user, task);
+    public Comment addComment(String comment, User user, String date, Task task)
+    {
+        Comment temp = new Comment(comment, user, date);
+        task.comment(temp);
+        return temp;
     }
 
     public Task save(Task task){
