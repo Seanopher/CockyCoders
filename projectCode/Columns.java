@@ -23,6 +23,31 @@ public class Columns {
     }
 
     /**
+     * getters and setters
+     * ArrayList<Task> tasks
+     * String title
+     * ArrayList<String> titles
+     */
+    public ArrayList<Task> getTasks(){
+        return tasks;
+    }
+    public void setTask(ArrayList<Task> tasks){
+        this.tasks = tasks;
+    }
+    public String getTitle(){
+        return title;
+    }
+    public void setTitle(String title){
+        this.title = title;
+    }
+    public ArrayList<String> getTitles(){
+        return titles;
+    }
+    public void setTasks(ArrayList<String> titles){
+        this.titles = titles;
+    }
+
+    /**
      * it checks to see if the column exists
      * if it exists it adds a number to the back of it
      * 
@@ -58,7 +83,24 @@ public class Columns {
         return this;
     }
 
+    public Columns changeColumn(Columns columnFrom, Columns columnTo, Columns title){
+        int fromLoc = columnFrom.getTitles().indexOf(columnFrom.getTitle());
+        int toLoc = columnTo.getTitles().indexOf(columnTo.getTitle());
 
+        String holdTitle = title.getTitle();
+
+        columnTo.getTitles().add(toLoc, holdTitle);
+        columnFrom.getTitles().remove(fromLoc);
+
+        return this;
+    }
+
+    /**
+     * finds the task that they want to remove
+     * then removes if true and returns true or returns false
+     * @param task user input
+     * @return if true or false
+     */
     public boolean addTasks(Task task){
         if(task !=null){
             tasks.add(task);
@@ -67,6 +109,12 @@ public class Columns {
         return false;
     }
 
+    /**
+     * finds the task that they want to remove
+     * then removes if true and returns true or returns false
+     * @param task user input
+     * @return if true or false
+     */
     public boolean removeTasks(Task task){
         if(tasks.contains(task)){
         tasks.remove(task);
