@@ -44,23 +44,37 @@ public class DataLoader extends DataConstants{
 
         try{
             FileReader reader = new FileReader(PROJECT_FILE_NAME);
-            JSONArray projectsJSON = (JSONArray)new JSONParser().parse(reader);
+            JSONObject obj = (JSONObject) new JSONParser().parse(reader)
+            JSONArray projectsJSON = (JSONArray)obj.get("Projects")
+            UserList userList = UserList.getInstance();
+            ArrayList<User> users;
+            for(Object object: projectsJSON) 
+            {
+				JSONObject projectJSON = (JSONObject) object;
 
-            for(int i=0; i < projectsJSON.size(); i++) {
-				JSONObject projectJSON = (JSONObject)projectsJSON.get(i);
-				String name = (String)projectJSON.get(PROJECT_NAME);
+				String id = (String)projectJSON.get(PROJECT_ID);
+                String name = (String)projectJSON.get(PROJECT_NAME);
+                
+                JSONArray projectUserIDs = (JSONArray)projectJSON.get(PROJECT_USERS);
+                for(int j=0; j < projectUserIDs.size(); j++){
+                    String userID = (String)projectUserIDs.get(j);
+                    UUID userUUID = UUID.fromString(userID); 
+                    User user = userList.getUser(userUUID);
 
-				String userID = (String)projectJSON.get(PROJECT_USERS);
-                UUID userUUID = UUID.fromString(userID); 
-                UserList userList = UserList.getInstance();
+                    if(user != null){
+                        users.add(user);
+                    }
 
 
-				String columns = (String)projectJSON.get(PROJECT_COLUMNS);
-               
+
+                    
+                }
+                
+                String columns = (String) projectJSON.get(PROJECT_COLUMNS);
 
 				//go through user list to find users based on userID and add them to an a arraylist 
                 //because users in project JSON is the userID
-				projects.add(new Project(name, userID, columns));
+				projects.add(new Project(id, name, users, columns));
 			}
             return projects;
         } catch (Exception e) {
@@ -68,6 +82,7 @@ public class DataLoader extends DataConstants{
         }
         return null;
     }
+
 
     public boolean loadTasks(){
         ArrayList<Task> tasks = new ArrayList<Task>();
@@ -79,18 +94,20 @@ public class DataLoader extends DataConstants{
 
             for(int i=0; i < tasksJSON.size(); i++) {
 				JSONObject taskJSON = (JSONObject)tasksJSON.get(i);
-				String name = (String)taskJSON.get(TASK_NAME);
+				String taskName = (String)taskJSON.get(TASK_NAME);
 				String description = (String)taskJSON.get(TASK_DESCRIPTION);
+
+
 				String assignedUser = (String)taskJSON.get(TASK_ASSIGNED_USER);
                 String taskDate = (String)taskJSON.get(TASK_DATE);
-				String dueDate = (String)taskJSON.get(TASK_DUE_DATE);
                 String document = (String)taskJSON.get(TASK_DOCUMENT);
 				String taskType = (String)taskJSON.get(TASK_TYPE);
+
+
                 String comments = (String)taskJSON.get(TASK_COMMENTS);
-				String history = (String)taskJSON.get(TASK_HISTORY);
 				
-				tasks.add(new Task(name, description, assignedUser ,taskDate, dueDate, document, taskType, comments,history));
-			}
+				tasks.add(new Task(taskName, description, assignedUser, document, taskType));
+			}//String taskName, String description, User assignedUser, String document, TaskType taskType
             return true;
         } catch (Exception e) {
 			e.printStackTrace();

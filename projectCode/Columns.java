@@ -23,6 +23,31 @@ public class Columns {
     }
 
     /**
+     * getters and setters
+     * ArrayList<Task> tasks
+     * String title
+     * ArrayList<String> titles
+     */
+    public ArrayList<Task> getTasks(){
+        return tasks;
+    }
+    public void setTasks(ArrayList<Task> tasks){
+        this.tasks = tasks;
+    }
+    public String getTitle(){
+        return title;
+    }
+    public void setTitle(String title){
+        this.title = title;
+    }
+    public ArrayList<String> getTitles(){
+        return titles;
+    }
+    public void setTitles(ArrayList<String> titles){
+        this.titles = titles;
+    }
+
+    /**
      * it checks to see if the column exists
      * if it exists it adds a number to the back of it
      * 
@@ -40,8 +65,6 @@ public class Columns {
         }
         this.titles.add(title);
 
-
-
         return this;
     }
 
@@ -58,7 +81,27 @@ public class Columns {
         return this;
     }
 
+    /**
+     * moves task from one column to another
+     * @param columnFrom where the task is
+     * @param columnTo where they want to move the task to
+     * @param task the task they are moveing
+     * @return instance
+     */
+    public Columns changeColumn(Columns columnFrom, Columns columnTo, Task task){
+        int loc = columnFrom.getTasks().indexOf(task);
+        columnTo.getTasks().add(task);
+        columnFrom.getTasks().remove(loc);
+        
+        return this;
+    }
 
+    /**
+     * finds the task that they want to remove
+     * then removes if true and returns true or returns false
+     * @param task user input
+     * @return if true or false
+     */
     public boolean addTasks(Task task){
         if(task !=null){
             tasks.add(task);
@@ -67,6 +110,12 @@ public class Columns {
         return false;
     }
 
+    /**
+     * finds the task that they want to remove
+     * then removes if true and returns true or returns false
+     * @param task user input
+     * @return if true or false
+     */
     public boolean removeTasks(Task task){
         if(tasks.contains(task)){
         tasks.remove(task);
