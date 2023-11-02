@@ -18,6 +18,28 @@ public class User {
     protected UserList userList;
 
     /**
+     * user constructor
+     * @param userID
+     * @param firstName
+     * @param lastName
+     * @param password
+     * @param username
+     * @param userType
+     */
+    public User(String userID, String firstName, String lastName, String password, String username, String userType)
+    {
+        if(userID != null && firstName != null && lastName != null && password != null && userType != null)
+        {
+
+        this.userID = userID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.username = username;
+        }
+    }
+
+    /**
      * creates a new user by taking in parameters
      * @param userID
      * @param firstName
@@ -31,6 +53,7 @@ public class User {
     {
         if(userID != null && firstName != null && lastName != null && password != null && userType != null)
         {
+            User temp = new User(userType, firstName, lastName, password, username, userType);
             this.UUID = userID;
             this.userID = userID.toString();
             this.firstName = firstName;
@@ -38,7 +61,7 @@ public class User {
             this.password = password;
             this.username = username;
             this.userType = userType;
-            return newUser(userID, firstName, lastName, password, username, userType);
+            return temp;
         }
         return null;
 

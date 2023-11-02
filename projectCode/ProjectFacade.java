@@ -1,6 +1,11 @@
 package projectCode;
 import java.util.ArrayList;
 import java.util.UUID;
+
+/**
+ * 
+ * @author Cocky Coders
+ */
 public class ProjectFacade {
     private User user;
     private UserList userList;
@@ -35,9 +40,10 @@ public class ProjectFacade {
     /* utilizes user class to create new user */
     public User createUser(UUID userID, String firstName, String lastName, String password, String username, String userType)
     {
+        user = new User(userType, firstName, lastName, password, username, userType);
         if(userID != null && firstName != null && lastName != null && password != null && userType != null)
         {
-            return user.newUser(userID, firstName, lastName, password, username, userType);
+            return this.user.newUser(userID, firstName, lastName, password, username, userType);
         }
         else
             return null;
@@ -91,9 +97,10 @@ public class ProjectFacade {
     /* creates new colun */
     public Columns createColumn(String title)
     {
+        Columns column = new Columns(title);
         if (title!=null)
         {
-            return createColumn(title);
+            return column.createColumn(title);
         }
         else
             return null;
