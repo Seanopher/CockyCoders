@@ -1,4 +1,5 @@
 package projectCode;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -125,12 +126,12 @@ public class ProjectFacade {
     }
 
     /* creates new task */
+    /* 
     public Task newTask(String taskName, String description, User assignedUser, String document, TaskType taskType)
     {
-        Task temp = new Task();
-        temp.newTask(taskName, description, assignedUser, document, taskType);
-        return temp;
+       return newTask(taskName, description, assignedUser, document, taskType);
     }
+    */
     /* adds task to column */
     public boolean addTask(Columns column, Task task)
     {
@@ -142,7 +143,7 @@ public class ProjectFacade {
             return false;
     }
 
-    public Comment addComment(String comment, User user, String date, Task task)
+    public Comment addComment(String comment, User user, Date date, Task task)
     {
         Comment temp = new Comment(comment, user, date);
         task.comment(temp);

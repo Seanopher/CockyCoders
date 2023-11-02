@@ -2,6 +2,7 @@ package projectCode;
 import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
+import java.util.Date;
 /**
  * @author Hughes
  * a comments class that creates a list of comments and adds them to a list
@@ -9,7 +10,7 @@ import java.time.LocalDate;
 public class Comment {
     public String comment;
     public User user;
-    public LocalDate date;
+    public Date date;
     private List<Comment> comments;
     /**
      * Creates instances of the varibles associated with comment
@@ -17,7 +18,7 @@ public class Comment {
      * @param user the person writing the comment
      * @param date the date the comment is written
      */
-    public Comment(String comment, User user, LocalDate date){
+    public Comment(String comment, User user, Date date){
         this.comment = comment;
         this.user = user;
         this.date = date;
@@ -29,7 +30,7 @@ public class Comment {
      * @param user the user that is writing the comment
      * @param date the date it is being made
      */
-    public void addComment(String comment, User user, LocalDate date) {
+    public void addComment(String comment, User user, Date date) {
         Comment newComment = new Comment(comment, user, date);
         comments.add(newComment);
     }

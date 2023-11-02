@@ -28,7 +28,8 @@ public class Columns {
      * String title
      * ArrayList<String> titles
      */
-    public ArrayList<Task> getTasks(){
+    public ArrayList<Task> getTasks()
+    {
         return tasks;
     }
     public void setTasks(ArrayList<Task> tasks){

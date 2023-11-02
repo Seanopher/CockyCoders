@@ -29,7 +29,7 @@ public class Task {
 
     public Task newTask(String taskName, String description, User assignedUser, String document, TaskType taskType){
         if ( taskName != null && description != null && assignedUser != null && document != null && taskType != null){
-            Task temp = new Task();
+            Task temp = new Task(taskName, description, assignedUser, document, taskType);
             this.taskName = taskName;
             this.description = description;
             this.assignedUser = assignedUser;
@@ -45,6 +45,7 @@ public class Task {
     {
         if(taskName != null && description != null && assignedUser != null && document != null && taskType != null)
         {
+        this.comments = new ArrayList<Comment>();
         this.taskName = taskName;
         this.description = description;
         this.assignedUser = assignedUser;

@@ -30,7 +30,7 @@ public class User {
     {
         if(userID != null && firstName != null && lastName != null && password != null && userType != null)
         {
-
+        this.projects = new ArrayList<Project>();
         this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
