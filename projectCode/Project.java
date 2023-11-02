@@ -51,7 +51,7 @@ public class Project
 
 
 //These bottom two are set to null as placeholders 
-    public UserList getUsers() {
+    public ArrayList<User> getUsers() {
         return users;
     }
     public String getColumns(){
