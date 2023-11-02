@@ -89,11 +89,11 @@ public class ProjectFacade {
     }
     
     /* creates new colun */
-    public Columns createColumn(Columns column, String title)
+    public Columns createColumn(String title)
     {
-        if(column!= null && title!=null)
+        if (title!=null)
         {
-            return column.createColumn(title);
+            return createColumn(title);
         }
         else
             return null;
@@ -140,6 +140,17 @@ public class ProjectFacade {
         Comment temp = new Comment(comment, user, date);
         task.comment(temp);
         return temp;
+    }
+
+
+    public Columns addTask(Task task)
+    {
+        return addTask(task);
+    }
+
+    public Columns removeTask(Task task)
+    {
+        return removeTask(task);
     }
 
     public Task save(Task task){
