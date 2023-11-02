@@ -2,7 +2,7 @@ package projectCode;
 import java.util.ArrayList;
 
 /**
- * @author EmmaLee Peyton
+ * @author Cocky Coders
  * it allows for the creation and removal of columns
  */
 public class Columns {
