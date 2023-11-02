@@ -28,6 +28,7 @@ public class Task {
      */
     public Task newTask(String taskName, String description, User assignedUser, String document, TaskType taskType){
         if ( taskName != null && description != null && assignedUser != null && document != null && taskType != null){
+            Task temp = new Task();
             this.taskName = taskName;
             this.description = description;
             this.assignedUser = assignedUser;

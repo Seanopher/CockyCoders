@@ -57,14 +57,7 @@ public class Columns {
      * @return the instance of this
      */
     public Columns createColumn(String title){
-        if(this.titles.contains(title)){
-            int i = 1;
-            while(this.title.contains(title))
-                i++;
-            title = title + "(" + i + ")";
-        }
         this.titles.add(title);
-
         return this;
     }
 

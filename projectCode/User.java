@@ -30,12 +30,12 @@ public class User {
     {
         if(userID != null && firstName != null && lastName != null && password != null && userType != null)
         {
-
-        this.userID = userID;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.password = password;
-        this.username = username;
+            this.projects = new ArrayList<Project>();
+            this.userID = userID;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.password = password;
+            this.username = username;
         }
     }
 
@@ -53,6 +53,7 @@ public class User {
     {
         if(userID != null && firstName != null && lastName != null && password != null && userType != null)
         {
+            User temp = new User(userType, firstName, lastName, password, username, userType);
             this.UUID = userID;
             this.userID = userID.toString();
             this.firstName = firstName;
@@ -60,7 +61,7 @@ public class User {
             this.password = password;
             this.username = username;
             this.userType = userType;
-            return newUser(userID, firstName, lastName, password, username, userType);
+            return temp;
         }
         return null;
 
