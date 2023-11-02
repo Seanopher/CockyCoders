@@ -59,7 +59,7 @@ public class User {
     public User getUser(UUID userID)
     {
         String userUUIDtoString = userID.toString(); //changes the UUID into a String
-        for (User users : UserList.getInstance())
+        for (User users : userList)
         {
             if (users.getUUID().equals(userUUIDtoString)) //checks if userId matches
             {
