@@ -31,7 +31,7 @@ public class Columns {
     public ArrayList<Task> getTasks(){
         return tasks;
     }
-    public void setTask(ArrayList<Task> tasks){
+    public void setTasks(ArrayList<Task> tasks){
         this.tasks = tasks;
     }
     public String getTitle(){
@@ -43,7 +43,7 @@ public class Columns {
     public ArrayList<String> getTitles(){
         return titles;
     }
-    public void setTasks(ArrayList<String> titles){
+    public void setTitles(ArrayList<String> titles){
         this.titles = titles;
     }
 
@@ -83,15 +83,11 @@ public class Columns {
         return this;
     }
 
-    public Columns changeColumn(Columns columnFrom, Columns columnTo, Columns title){
-        int fromLoc = columnFrom.getTitles().indexOf(columnFrom.getTitle());
-        int toLoc = columnTo.getTitles().indexOf(columnTo.getTitle());
-
-        String holdTitle = title.getTitle();
-
-        columnTo.getTitles().add(toLoc, holdTitle);
-        columnFrom.getTitles().remove(fromLoc);
-
+    public Columns changeColumn(Columns columnFrom, Columns columnTo, Task task){
+        int loc = columnFrom.getTasks().indexOf(task);
+        columnTo.getTasks().add(task);
+        columnFrom.getTasks().remove(loc);
+        
         return this;
     }
 
