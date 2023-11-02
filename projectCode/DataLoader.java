@@ -44,8 +44,8 @@ public class DataLoader extends DataConstants{
 
         try{
             FileReader reader = new FileReader(PROJECT_FILE_NAME);
-            JSONObject obj = (JSONObject) new JSONParser().parse(reader)
-            JSONArray projectsJSON = (JSONArray)obj.get("Projects")
+            JSONObject obj = (JSONObject) new JSONParser().parse(reader);
+            JSONArray projectsJSON = (JSONArray)obj.get("Projects");
             UserList userList = UserList.getInstance();
             ArrayList<User> users;
             for(Object object: projectsJSON) 
@@ -64,12 +64,19 @@ public class DataLoader extends DataConstants{
                     if(user != null){
                         users.add(user);
                     }
-
-
-
-                    
                 }
-                
+                JSONArray projectColumns = (JSONArray)projectsJSON.get(PROJECT_COLUMNS);
+                for(int k=0; k < )
+        //         "columns": [
+        //     {"title": "column1", "taskTitles": ["title1", "title2", "title3"]},
+        //     {"title": "column2", "taskTitles": ["title4", "title5", "title6"]},
+        //     {"title": "column3", "taskTitles": ["title7", "title8", "title9"]}
+        // ]
+        // private ArrayList<Task> tasks;
+        // private String title;
+        // private ArrayList<String> titles;
+
+
                 String columns = (String) projectJSON.get(PROJECT_COLUMNS);
 
 				//go through user list to find users based on userID and add them to an a arraylist 

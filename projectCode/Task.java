@@ -26,6 +26,7 @@ public class Task {
      * @param taskType The type of the task, so it can be idenified by the user
      * @return a new task
      */
+
     public Task newTask(String taskName, String description, User assignedUser, String document, TaskType taskType){
         if ( taskName != null && description != null && assignedUser != null && document != null && taskType != null){
             this.taskName = taskName;
@@ -38,6 +39,20 @@ public class Task {
         }
         return null;
     }
+
+    public Task(String taskName, String description, User assignedUser, String document, TaskType taskType)
+    {
+        if(taskName != null && description != null && assignedUser != null && document != null && taskType != null)
+        {
+        this.taskName = taskName;
+        this.description = description;
+        this.assignedUser = assignedUser;
+        this.document = document;
+        this.taskType = taskType;
+        }
+    }
+
+
     //Basic getters
     public String getName(){
         return taskName;
