@@ -2,6 +2,10 @@ package projectCode;
 import java.util.ArrayList;
 import java.util.UUID;
 
+/** 
+ * @author Cocky Coders
+ * creates new user,
+ */
 public class User {
     private String firstName;
     private String lastName; 
@@ -12,14 +16,39 @@ public class User {
     private String userType;
     private ArrayList<Project> projects;
     protected UserList userList;
-    
 
+    /**
+     * user constructor
+     * @param userID
+     * @param firstName
+     * @param lastName
+     * @param password
+     * @param username
+     * @param userType
+     */
+    public User(String userID, String firstName, String lastName, String password, String username, String userType)
+    {
+        if(userID != null && firstName != null && lastName != null && password != null && userType != null)
+        {
 
-        //ask if order matters on JSON files. If so change order to match JSON
-        /*
-         * creates a new user takes in a UUID, their firstname, their lastName, their password, 
-         * and their user type, use when need to make a new user
-         */
+        this.userID = userID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.username = username;
+        }
+    }
+
+    /**
+     * creates a new user by taking in parameters
+     * @param userID
+     * @param firstName
+     * @param lastName
+     * @param password
+     * @param username
+     * @param userType
+     * @return
+     */
     public User newUser(UUID userID, String firstName, String lastName, String password, String username, String userType)
     {
         if(userID != null && firstName != null && lastName != null && password != null && userType != null)
@@ -36,25 +65,9 @@ public class User {
         return null;
 
     }
-    /*
-     * method that you call when you have already created a user and are just looking to return the user.
-     * takes in their UUID, firstname, lastName, password, 
-         * and user type
-     */
-    public User(String userID, String firstName, String lastName, String password, String username, String userType)
-    {
-        if(userID != null && firstName != null && lastName != null && password != null && userType != null)
-        {
-
-        this.userID = userID;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.password = password;
-        this.username = username;
-        }
-    }
-    /*
-     * basic getters.
+    
+    /**
+     * Getters
      */
     public User getUser(UUID userID){
         return userList.getUser(UUID);
@@ -74,7 +87,6 @@ public class User {
     public String getPassword(){
         return password;
     }
-    
     public String getUserType(){
         return userType;
     }
@@ -89,8 +101,14 @@ public class User {
         }
         return false;
     }
+
     /*
      * takes in a project and removes it from the users projectList
+     */
+    /**
+     * 
+     * @param project
+     * @return
      */
     public boolean leaveProject(Project project){
         for(int i = 0; i < projects.size(); i++){
@@ -103,6 +121,11 @@ public class User {
     }
     /*
      * takes in a user and changes their type
+     */
+    /**
+     * changes a user type and returns a boolean
+     * @param user user input
+     * @return if true or false
      */
     public boolean changeType(User user){
         if(user.userType.equalsIgnoreCase("admin")){
