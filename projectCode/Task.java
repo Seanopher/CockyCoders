@@ -11,12 +11,12 @@ public class Task {
     public String taskName;
     public String description;
     public User assignedUser;
-    public ArrayList<String> backLog;
+    //public ArrayList<String> backLog;
     public Date date;
     public String document;
     public ArrayList<Comment> comments;
     public TaskType taskType;
-    private ArrayList<Task> history;
+    //private ArrayList<Task> history;
     /**
      * Creates a new task
      * @param taskName The name of the task
@@ -27,18 +27,18 @@ public class Task {
      * @return a new task
      */
 
-    public Task newTask(String taskName, String description, User assignedUser, String document, TaskType taskType){
+    public void newTask(String taskName, String description, User assignedUser, String document, TaskType taskType, ArrayList<Comment> comments){
         if ( taskName != null && description != null && assignedUser != null && document != null && taskType != null){
-            Task temp = new Task(taskName, description, assignedUser, document, taskType);
+            
             this.taskName = taskName;
             this.description = description;
             this.assignedUser = assignedUser;
             this.document = document;
             this.taskType = taskType;
             this.comments = new ArrayList<>();
-            return newTask(taskName, description, assignedUser, document, taskType);
+            
         }
-        return null;
+        
     }
 
     public Task(String taskName, String description, User assignedUser, String document, TaskType taskType)

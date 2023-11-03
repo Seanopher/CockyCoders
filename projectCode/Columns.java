@@ -21,7 +21,11 @@ public class Columns {
         this.title = title;
         this.titles = new ArrayList<>();
     }
-
+    public void newColumns(ArrayList<Task> tasks, String title, ArrayList<String> titles){
+        this.tasks = tasks;
+        this.title = title;
+        this.titles = titles;
+    }
     /**
      * getters and setters
      * ArrayList<Task> tasks
