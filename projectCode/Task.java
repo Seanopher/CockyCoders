@@ -92,9 +92,11 @@ public class Task {
         Comment newComment = new Comment(comment, user, date);
         comments.add(newComment);
     }
-    public void displayComments(Task task){
+    public ArrayList<String> displayComments(Task task){
+       ArrayList<String> commentList = new ArrayList<String>();
         for(int i = 0; i < comments.size(); ++i){
-            System.out.println(comments.get(i).getComment());
+            commentList.add(comments.get(i).getComment());
         }
+        return commentList;
     }
 }

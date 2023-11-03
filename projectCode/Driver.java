@@ -36,7 +36,6 @@ public class Driver {
         facade.joinProject(electric_Missles, atticus);
         facade.joinProject(soap_Free_Washers, atticus);
         facade.joinProject(air_Computers, atticus);
-        atticus.displayProjects(atticus);
         Columns toDo = new Columns("To-Do");
         Columns doing = new Columns("Doing");
         Columns done = new Columns("Done");
@@ -48,7 +47,6 @@ public class Driver {
         facade.createColumn("Done");
 
         /* Add a new task "Initialize super algorithm to detonate at warp speed". Assign the task to Jeff Goldblum. */
-        
         User jeff = facade.createUser(UUID.randomUUID(), "John", "Goldblum", "Goldblum41", "JGoldblum", "USER");
         Task initialize = new Task("Initialize super algorithm to detonate at warp speed.", "Description", jeff, "Document", TaskType.CODE);
 
@@ -65,28 +63,38 @@ public class Driver {
         facade.addComment("Not cylindrical enough", jeff, date, curve);
         facade.addComment("What's a cylinder", atticus, date, curve);
 
+        /* Add a new column called "Abandoned"
+        Move an existing task "Make impossible burger possible" which doesn't really relate to the project purpose to "Abandoned" */
         facade.createColumn("Abandoned");
         Columns abandoned = new Columns("Abandoned");
-
-
-
-
+        
         Task burger = new Task("Make impossible burger possible.", "Description", jeff, "Document", TaskType.CODE);
-        
-        burger.addComment("Hi", jeff, date);
-        burger.addComment("HI back", jeff, date);
-        burger.displayComments(burger);
         facade.addTask(toDo, burger);
-        facade.changeColumn(toDo, abandoned, burger);
-        
-        electric_Missles.displayColumns();
 
-        // System.out.println("ToDo - "+toDo.getTasks());
+        facade.changeColumn(toDo, abandoned, burger);
+
+
+
+        /* TESTING NEW ARRAYLISTS */
+        ArrayList<String> atticusProjects = facade.displayUserProjects(atticus);
+        String project1 = atticusProjects.get(0);
+        System.out.println(project1);
+
+        ArrayList<String> columns = facade.displayColumns(electric_Missles);
+        for(int i=0; i<columns.size(); i++)
+        {
+            System.out.println(columns.get(i));
+            
+        }
+            
         try {
             
         
             FileWriter writer = new FileWriter("output.txt");
-        
+            
+            
+
+            /* 
             writer.write("ToDo - \n");
             writer.write("Doing - Curve the metal to make a cylindrical shape. \n");
             writer.write("Comments - \n");
@@ -101,6 +109,7 @@ public class Driver {
             writer.write("Abandoned - \n");
             writer.write("Comments - \n");
             writer.write("    Make impossible burger possible. \n");
+            */
             writer.close();
         }
         

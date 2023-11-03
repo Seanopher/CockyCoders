@@ -72,12 +72,15 @@ public class Project
     {
         return column;
     }
-    public void displayColumns()
+    public ArrayList<String> displayColumns()
     {
+        ArrayList<String> columnList = new ArrayList<String>();
         for(int i = 0; i < column.size(); ++i)
         {
-            column.get(i).displayColumns();
+            columnList.add(column.get(i).displayTasks());
         }
+
+        return columnList;
     }
  
 }   

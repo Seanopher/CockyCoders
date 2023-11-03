@@ -167,27 +167,33 @@ public class ProjectFacade {
     /***************** DISPLAY METHODS  ****************/
 
      /* display the projects for a user */
-    public void displayUserProjects(User user)
+    public ArrayList<String> displayUserProjects(User user)
     {
-        user.displayProjects(user);
+        ArrayList<String> userProjects = user.displayProjects(user);
+        return userProjects;
     }
 
     /* display the project's columns */
-    public void displayColumns(Project project)
+    public ArrayList<String> displayColumns(Project project)
     {
-        project.displayColumns();
+        ArrayList<String> columns = project.displayColumns();
+        return columns;
     }
 
-    /* displays the column's tasks. */
-    public void displayTasks(Columns column)
+    /* 
+    
+    public ArrayList<String> displayTasks(Columns column)
     {
+        ArrayList<String> tasks = column.displayTasks();
         column.displayTasks();
     }
+    */
 
      /* displays the task's comments */
-    public void displayComments(Task task)
+    public ArrayList<String> getComments(Task task)
     {
-        task.displayComments(task);
+        ArrayList<String> comments = task.displayComments(task);
+        return comments;
     }
 
     public Task save(Task task){

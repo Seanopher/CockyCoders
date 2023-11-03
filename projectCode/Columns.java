@@ -118,11 +118,13 @@ public class Columns {
         return false;
     }
 
-    public void displayTasks(){
-        System.out.println(title + "\n");
+    public String displayTasks(){
+        ArrayList<String> taskList = new ArrayList<String>();
+        taskList.add(title + "\n");
         for(int i = 0; i < tasks.size(); ++i)
         {
-            System.out.println(tasks.get(i).getName() + ": "+ tasks.get(i).getDescription() + "\n");
+            taskList.add(tasks.get(i).getName() + ": "+ tasks.get(i).getDescription() + "\n");
         }
+        return taskList.toString();
     }
 }

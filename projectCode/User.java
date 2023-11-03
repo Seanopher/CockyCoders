@@ -101,11 +101,13 @@ public class User {
     public ArrayList<Project> getProjects(){
         return projects;
     }
-    public void displayProjects(User user){
+    public ArrayList<String> displayProjects(User user){
+        ArrayList<String> projectList = new ArrayList<String>();
         for(int i = 0; i < user.getProjects().size(); ++i)
         {
-            System.out.println(user.getProjects().get(i).getProjectName());
+           projectList.add(user.getProjects().get(i).getProjectName());
         }
+        return projectList;
     }
     /*
      * takes in a project and adds it to the users ProjectList
