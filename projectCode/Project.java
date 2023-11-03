@@ -26,6 +26,13 @@ public class Project
         this.column = new ArrayList<Columns>();
     }
 
+    public void newProject(String name, String projectID, ArrayList<User> users, ArrayList<Columns> column){
+        this.name = name;
+        this.pID = projectID;
+        this.users = users;
+        this.column = column;
+    }
+
     /*
      * Takes in a name, projectID, and users
      */
