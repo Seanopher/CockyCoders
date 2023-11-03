@@ -38,8 +38,11 @@ public class DataLoader extends DataConstants{
         return null;
     }
 
-    // UUID userID, String firstName, String lastName, String password, String username, String userType
-    
+
+    /*
+     * Taking in the JSON file and parsing it into objects
+     * Returns an arraylist of projects 
+     */
     public ArrayList<Project> loadProjects(){
         ArrayList<Project> projects = new ArrayList<Project>();
 
@@ -57,6 +60,7 @@ public class DataLoader extends DataConstants{
             ArrayList<User> users = new ArrayList<>();
 
             for (Object user : projectUserIDs) {
+                
                 User userlist = UserList.getUser((String) user);
                 users.add((String) user);
             }
@@ -81,8 +85,6 @@ public class DataLoader extends DataConstants{
 
             columns.add(new newColumns(columnTitle, taskTitles)); //idk how to do this 
 			}
-
-
 
             projects.add(Project.newProject(name, id, users, columns));
             return projects;
