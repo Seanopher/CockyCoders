@@ -15,6 +15,7 @@ public class DataLoader extends DataConstants{
         try{
             FileReader reader = new FileReader(USER_FILE_NAME);
             JSONArray usersJSON = (JSONArray)new JSONParser().parse(reader);
+            ArrayList<Project> projectList = new ArrayList<Project>();
 
             for(int i=0; i < usersJSON.size(); i++) {
 				JSONObject userJSON = (JSONObject)usersJSON.get(i);
@@ -27,7 +28,7 @@ public class DataLoader extends DataConstants{
 				String userType = (String)userJSON.get(USER_USERTYPE);
                 String projects = (String)userJSON.get(USER_PROJECTS);
 
-				User user = new User(userID, firstName, lastName, password, username, userType);
+				User user = newUser(userID, firstName, lastName, password, username, userType, projectList);
 				users.add(user);
 			}
             return users;
@@ -37,7 +38,7 @@ public class DataLoader extends DataConstants{
         return null;
     }
 
-
+    // UUID userID, String firstName, String lastName, String password, String username, String userType
     
     public ArrayList<Project> loadProjects(){
         ArrayList<Project> projects = new ArrayList<Project>();
@@ -51,16 +52,21 @@ public class DataLoader extends DataConstants{
             String id = (String)projectDetails.get(PROJECT_ID);
             String name = (String)projectDetails.get(PROJECT_NAME);
 
+            //loading users in project
             JSONArray projectUserIDs = (JSONArray)projectDetails.get(PROJECT_USERS);
-            ArrayList<String> users = new ArrayList<>();
+            ArrayList<User> users = new ArrayList<>();
 
             for (Object user : projectUserIDs) {
+                User userlist = UserList.getUser((String) user);
                 users.add((String) user);
             }
 
-
+            //loading columns in project
             JSONArray columnsArray = (JSONArray) projectDetails.get("columns");
             ArrayList<Columns> columns = new ArrayList<>();
+            ArrayList<Task> objTaskList = new ArrayList<>();
+            TaskList taskList = TaskList.getInstance();
+
 
             for (Object columnObj : columnsArray) {
                 JSONObject columnDetails = (JSONObject) columnObj;
@@ -69,13 +75,16 @@ public class DataLoader extends DataConstants{
                 ArrayList<String> taskTitles = new ArrayList<>();
 
             for (Object taskTitle : taskTitlesArray) {
-                taskTitles.add((String) taskTitle);
+                Task task = taskList.getTask((String) taskTitle);
+                objTaskList.add(task);
             }
 
-            columns.add(new Columns(columnTitle, taskTitles));
-        
-			projects.add(new Project(id, name, users, columns));
+            columns.add(new newColumns(columnTitle, taskTitles)); //idk how to do this 
 			}
+
+
+
+            projects.add(Project.newProject(name, id, users, columns));
             return projects;
         } catch (Exception e) {
 			e.printStackTrace();

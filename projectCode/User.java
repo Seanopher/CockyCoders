@@ -63,8 +63,6 @@ public class User {
             this.projects = projects;
             
         }
-        
-
     }
     
     /*
