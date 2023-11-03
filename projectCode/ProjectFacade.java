@@ -164,6 +164,32 @@ public class ProjectFacade {
         return removeTask(task);
     }
 
+    /***************** DISPLAY METHODS  ****************/
+
+     /* display the projects for a user */
+    public void displayUserProjects(User user)
+    {
+        user.displayProjects(user);
+    }
+
+    /* display the project's columns */
+    public void displayColumns(Project project)
+    {
+        project.displayColumns();
+    }
+
+    /* displays the column's tasks. */
+    public void displayTasks(Columns column)
+    {
+        column.displayTasks();
+    }
+
+     /* displays the task's comments */
+    public void displayComments(Task task)
+    {
+        task.displayComments(task);
+    }
+
     public Task save(Task task){
         return save(task);
     }

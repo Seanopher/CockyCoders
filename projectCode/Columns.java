@@ -118,7 +118,7 @@ public class Columns {
         return false;
     }
 
-    public void displayColumns(){
+    public void displayTasks(){
         System.out.println(title + "\n");
         for(int i = 0; i < tasks.size(); ++i)
         {
