@@ -83,7 +83,7 @@ public class Driver {
         ArrayList<String> columns = facade.displayColumns(electric_Missles);
         for(int i=0; i<columns.size(); i++)
         {
-            System.out.println(columns.get(i));
+            System.out.print(columns.get(i) +" \n");
             
         }
             
