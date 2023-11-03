@@ -26,8 +26,10 @@ public class Task {
      * @param taskType The type of the task, so it can be idenified by the user
      * @return a new task
      */
+
     public Task newTask(String taskName, String description, User assignedUser, String document, TaskType taskType){
         if ( taskName != null && description != null && assignedUser != null && document != null && taskType != null){
+            Task temp = new Task(taskName, description, assignedUser, document, taskType);
             this.taskName = taskName;
             this.description = description;
             this.assignedUser = assignedUser;
@@ -38,6 +40,21 @@ public class Task {
         }
         return null;
     }
+
+    public Task(String taskName, String description, User assignedUser, String document, TaskType taskType)
+    {
+        if(taskName != null && description != null && assignedUser != null && document != null && taskType != null)
+        {
+        this.comments = new ArrayList<Comment>();
+        this.taskName = taskName;
+        this.description = description;
+        this.assignedUser = assignedUser;
+        this.document = document;
+        this.taskType = taskType;
+        }
+    }
+
+
     //Basic getters
     public String getName(){
         return taskName;
@@ -71,5 +88,15 @@ public class Task {
     public void comment(Comment comment){
         comments.add(comment);
     }
-    
+    public void addComment(String comment, User user, Date date) {
+        Comment newComment = new Comment(comment, user, date);
+        comments.add(newComment);
+    }
+    public ArrayList<String> displayComments(Task task){
+       ArrayList<String> commentList = new ArrayList<String>();
+        for(int i = 0; i < comments.size(); ++i){
+            commentList.add(comments.get(i).getComment());
+        }
+        return commentList;
+    }
 }

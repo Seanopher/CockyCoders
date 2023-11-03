@@ -1,9 +1,18 @@
 package projectCode;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.UUID;
+
+/**
+ * 
+ * @author Cocky Coders
+ */
 public class ProjectFacade {
     private User user;
     private UserList userList;
+    private Columns column;
+    private Task task;
+    private Comment comment;
     private TaskList taskList;
     private Project project;
 
@@ -35,9 +44,10 @@ public class ProjectFacade {
     /* utilizes user class to create new user */
     public User createUser(UUID userID, String firstName, String lastName, String password, String username, String userType)
     {
+        user = new User(userType, firstName, lastName, password, username, userType);
         if(userID != null && firstName != null && lastName != null && password != null && userType != null)
         {
-            return user.newUser(userID, firstName, lastName, password, username, userType);
+            return this.user.newUser(userID, firstName, lastName, password, username, userType);
         }
         else
             return null;
@@ -91,9 +101,10 @@ public class ProjectFacade {
     /* creates new colun */
     public Columns createColumn(String title)
     {
+        Columns column = new Columns(title);
         if (title!=null)
         {
-            return createColumn(title);
+            return column.createColumn(title);
         }
         else
             return null;
@@ -118,12 +129,12 @@ public class ProjectFacade {
     }
 
     /* creates new task */
+    /* 
     public Task newTask(String taskName, String description, User assignedUser, String document, TaskType taskType)
     {
-        Task temp = new Task();
-        temp.newTask(taskName, description, assignedUser, document, taskType);
-        return temp;
+       return newTask(taskName, description, assignedUser, document, taskType);
     }
+    */
     /* adds task to column */
     public boolean addTask(Columns column, Task task)
     {
@@ -135,7 +146,7 @@ public class ProjectFacade {
             return false;
     }
 
-    public Comment addComment(String comment, User user, String date, Task task)
+    public Comment addComment(String comment, User user, Date date, Task task)
     {
         Comment temp = new Comment(comment, user, date);
         task.comment(temp);
@@ -151,6 +162,38 @@ public class ProjectFacade {
     public Columns removeTask(Task task)
     {
         return removeTask(task);
+    }
+
+    /***************** DISPLAY METHODS  ****************/
+
+     /* display the projects for a user */
+    public ArrayList<String> displayUserProjects(User user)
+    {
+        ArrayList<String> userProjects = user.displayProjects(user);
+        return userProjects;
+    }
+
+    /* display the project's columns */
+    public ArrayList<String> displayColumns(Project project)
+    {
+        ArrayList<String> columns = project.displayColumns();
+        return columns;
+    }
+
+    /* 
+    
+    public ArrayList<String> displayTasks(Columns column)
+    {
+        ArrayList<String> tasks = column.displayTasks();
+        column.displayTasks();
+    }
+    */
+
+     /* displays the task's comments */
+    public ArrayList<String> getComments(Task task)
+    {
+        ArrayList<String> comments = task.displayComments(task);
+        return comments;
     }
 
     public Task save(Task task){

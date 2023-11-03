@@ -2,7 +2,7 @@ package projectCode;
 import java.util.ArrayList;
 
 /**
- * @author EmmaLee Peyton
+ * @author Cocky Coders
  * it allows for the creation and removal of columns
  */
 public class Columns {
@@ -28,7 +28,8 @@ public class Columns {
      * String title
      * ArrayList<String> titles
      */
-    public ArrayList<Task> getTasks(){
+    public ArrayList<Task> getTasks()
+    {
         return tasks;
     }
     public void setTasks(ArrayList<Task> tasks){
@@ -57,14 +58,7 @@ public class Columns {
      * @return the instance of this
      */
     public Columns createColumn(String title){
-        if(this.titles.contains(title)){
-            int i = 1;
-            while(this.title.contains(title))
-                i++;
-            title = title + "(" + i + ")";
-        }
         this.titles.add(title);
-
         return this;
     }
 
@@ -122,5 +116,15 @@ public class Columns {
         return true;
         }
         return false;
+    }
+
+    public String displayTasks(){
+        ArrayList<String> taskList = new ArrayList<String>();
+        taskList.add(title + "\n");
+        for(int i = 0; i < tasks.size(); ++i)
+        {
+            taskList.add(tasks.get(i).getName() + ": "+ tasks.get(i).getDescription() + "\n");
+        }
+        return taskList.toString();
     }
 }
