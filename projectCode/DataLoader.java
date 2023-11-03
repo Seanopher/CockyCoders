@@ -29,7 +29,7 @@ public class DataLoader extends DataConstants{
 
 				User user = new User(userID, firstName, lastName, password, username, userType);
 				users.add(user);
-			} 
+			}
             return users;
         } catch (Exception e) {
 			e.printStackTrace();
@@ -45,43 +45,36 @@ public class DataLoader extends DataConstants{
         try{
             FileReader reader = new FileReader(PROJECT_FILE_NAME);
             JSONObject obj = (JSONObject) new JSONParser().parse(reader);
-            JSONArray projectsJSON = (JSONArray)obj.get("Projects");
-            UserList userList = UserList.getInstance();
-            ArrayList<User> users;
-            for(Object object: projectsJSON) 
-            {
-				JSONObject projectJSON = (JSONObject) object;
 
-				String id = (String)projectJSON.get(PROJECT_ID);
-                String name = (String)projectJSON.get(PROJECT_NAME);
-                
-                JSONArray projectUserIDs = (JSONArray)projectJSON.get(PROJECT_USERS);
-                for(int j=0; j < projectUserIDs.size(); j++){
-                    String userID = (String)projectUserIDs.get(j);
-                    UUID userUUID = UUID.fromString(userID); 
-                    User user = userList.getUser(userUUID);
+            JSONObject projectDetails = (JSONObject) obj.get("project");
 
-                    if(user != null){
-                        users.add(user);
-                    }
-                }
-                JSONArray projectColumns = (JSONArray)projectsJSON.get(PROJECT_COLUMNS);
-                for(int k=0; k < )
-        //         "columns": [
-        //     {"title": "column1", "taskTitles": ["title1", "title2", "title3"]},
-        //     {"title": "column2", "taskTitles": ["title4", "title5", "title6"]},
-        //     {"title": "column3", "taskTitles": ["title7", "title8", "title9"]}
-        // ]
-        // private ArrayList<Task> tasks;
-        // private String title;
-        // private ArrayList<String> titles;
+            String id = (String)projectDetails.get(PROJECT_ID);
+            String name = (String)projectDetails.get(PROJECT_NAME);
+
+            JSONArray projectUserIDs = (JSONArray)projectDetails.get(PROJECT_USERS);
+            ArrayList<String> users = new ArrayList<>();
+
+            for (Object user : projectUserIDs) {
+                users.add((String) user);
+            }
 
 
-                String columns = (String) projectJSON.get(PROJECT_COLUMNS);
+            JSONArray columnsArray = (JSONArray) projectDetails.get("columns");
+            ArrayList<Columns> columns = new ArrayList<>();
 
-				//go through user list to find users based on userID and add them to an a arraylist 
-                //because users in project JSON is the userID
-				projects.add(new Project(id, name, users, columns));
+            for (Object columnObj : columnsArray) {
+                JSONObject columnDetails = (JSONObject) columnObj;
+                String columnTitle = (String) columnDetails.get("title");
+                JSONArray taskTitlesArray = (JSONArray) columnDetails.get("taskTitles");
+                ArrayList<String> taskTitles = new ArrayList<>();
+
+            for (Object taskTitle : taskTitlesArray) {
+                taskTitles.add((String) taskTitle);
+            }
+
+            columns.add(new Columns(columnTitle, taskTitles));
+        
+			projects.add(new Project(id, name, users, columns));
 			}
             return projects;
         } catch (Exception e) {

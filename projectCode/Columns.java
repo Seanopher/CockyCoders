@@ -21,7 +21,11 @@ public class Columns {
         this.title = title;
         this.titles = new ArrayList<>();
     }
-
+    public void newColumns(ArrayList<Task> tasks, String title, ArrayList<String> titles){
+        this.tasks = tasks;
+        this.title = title;
+        this.titles = titles;
+    }
     /**
      * getters and setters
      * ArrayList<Task> tasks
@@ -116,5 +120,15 @@ public class Columns {
         return true;
         }
         return false;
+    }
+
+    public String displayTasks(){
+        ArrayList<String> taskList = new ArrayList<String>();
+        taskList.add(title + "\n");
+        for(int i = 0; i < tasks.size(); ++i)
+        {
+            taskList.add(tasks.get(i).getName() + ": "+ tasks.get(i).getDescription() + "\n");
+        }
+        return taskList.toString();
     }
 }

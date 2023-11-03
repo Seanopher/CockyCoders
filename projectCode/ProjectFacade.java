@@ -10,6 +10,9 @@ import java.util.UUID;
 public class ProjectFacade {
     private User user;
     private UserList userList;
+    private Columns column;
+    private Task task;
+    private Comment comment;
     private TaskList taskList;
     private Project project;
 
@@ -159,6 +162,38 @@ public class ProjectFacade {
     public Columns removeTask(Task task)
     {
         return removeTask(task);
+    }
+
+    /***************** DISPLAY METHODS  ****************/
+
+     /* display the projects for a user */
+    public ArrayList<String> displayUserProjects(User user)
+    {
+        ArrayList<String> userProjects = user.displayProjects(user);
+        return userProjects;
+    }
+
+    /* display the project's columns */
+    public ArrayList<String> displayColumns(Project project)
+    {
+        ArrayList<String> columns = project.displayColumns();
+        return columns;
+    }
+
+    /* 
+    
+    public ArrayList<String> displayTasks(Columns column)
+    {
+        ArrayList<String> tasks = column.displayTasks();
+        column.displayTasks();
+    }
+    */
+
+     /* displays the task's comments */
+    public ArrayList<String> getComments(Task task)
+    {
+        ArrayList<String> comments = task.displayComments(task);
+        return comments;
     }
 
     public Task save(Task task){

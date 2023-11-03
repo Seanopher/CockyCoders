@@ -49,11 +49,10 @@ public class User {
      * @param userType
      * @return
      */
-    public User newUser(UUID userID, String firstName, String lastName, String password, String username, String userType)
+    public void newUser(UUID userID, String firstName, String lastName, String password, String username, String userType, ArrayList<Project> projects)
     {
         if(userID != null && firstName != null && lastName != null && password != null && userType != null)
         {
-            User temp = new User(userType, firstName, lastName, password, username, userType);
             this.UUID = userID;
             this.userID = userID.toString();
             this.firstName = firstName;
@@ -61,9 +60,10 @@ public class User {
             this.password = password;
             this.username = username;
             this.userType = userType;
-            return temp;
+            this.projects = projects;
+            
         }
-        return null;
+        
 
     }
     
@@ -98,7 +98,17 @@ public class User {
     public String getUserType(){
         return userType;
     }
-    
+    public ArrayList<Project> getProjects(){
+        return projects;
+    }
+    public ArrayList<String> displayProjects(User user){
+        ArrayList<String> projectList = new ArrayList<String>();
+        for(int i = 0; i < user.getProjects().size(); ++i)
+        {
+           projectList.add(user.getProjects().get(i).getProjectName());
+        }
+        return projectList;
+    }
     /*
      * takes in a project and adds it to the users ProjectList
      */

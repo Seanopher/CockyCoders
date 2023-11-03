@@ -11,7 +11,7 @@ public class Comment {
     public String comment;
     public User user;
     public Date date;
-    private List<Comment> comments;
+    private ArrayList<Comment> comments;
     /**
      * Creates instances of the varibles associated with comment
      * @param comment the object
@@ -23,6 +23,13 @@ public class Comment {
         this.user = user;
         this.date = date;
         this.comments = new ArrayList<>();
+    }
+
+    public void newComment(String comment, User user, Date date, ArrayList<Comment> comments){
+        this.comment = comment;
+        this.user = user;
+        this.date = date;
+        this.comments = comments;
     }
     /**
      * Adds more comments to arraylist
@@ -40,5 +47,11 @@ public class Comment {
      */
     public List<Comment> getComments() {
         return comments;
+    }
+    public String getComment(){
+        return comment;
+    }
+    public String getUser(){
+        return user.getUsername();
     }
 }
