@@ -1,10 +1,23 @@
-ToDo - 
-Doing - Curve the metal to make a cylindrical shape. 
-Comments - 
-    Not cylindrical enough 
-    What's a cylinder 
-    How about you do it Jeff. 
-Done - 
-Abandoned - 
-Comments - 
-    Make impossible burger possible. 
+  ************** CODE MISSION POSSIBLE **************
+	--------=ELECTRIC MISSILES=--------
+         --------= TO-DO =--------
+ Task: Initialize super algorithm to detonate at warp speed: 
+ Description: MAKE SURE TO DETONATE AT WARP SPEED
+ User:Jeff Goldblum
+     -Avoid civilians Jeff! (AMadden)  |Fri Nov 03 20:54:01 EDT 2023|
+ 
+        --------= DOING =--------
+ Task: Curve the metal to make a cylindrical shape: 
+ Description: MAKE SURE TO WEAR GLOVES WHEN CURVING METAL
+ User:Jeff Goldblum
+     -Not cylindrical enough (JGoldblum)  |Fri Nov 03 20:54:01 EDT 2023|
+     -What's a cylinder (AtticusFinch25)  |Fri Nov 03 20:54:01 EDT 2023|
+     -How about you do it jeff (AMadden)  |Fri Nov 03 20:54:01 EDT 2023|
+ 
+         --------= DONE =--------
+ 
+       --------= ABANDONED =--------
+ Task: Make impossible burger possible: 
+ Description: IS IT POSSIBLE?
+ User:Jeff Goldblum
+ 

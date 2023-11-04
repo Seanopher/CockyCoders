@@ -1,5 +1,8 @@
 package projectCode;
 
+/**
+ * allows for the calling of the variables in the json files
+ */
 public abstract class DataConstants {
     protected static final String USER_FILE_NAME = "User.json";
     protected static final String USER = "userID";
@@ -18,7 +21,6 @@ public abstract class DataConstants {
     protected static final String TASK_DOCUMENT = "document";
     protected static final String TASK_TYPE = "taskType";
     protected static final String TASK_COMMENTS = "comments";
-    //protected static final String TASK_HISTORY = "history";
 
     protected static final String PROJECT_FILE_NAME = "Project.json";
     protected static final String PROJECT_ID = "id";

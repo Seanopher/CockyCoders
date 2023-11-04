@@ -92,11 +92,13 @@ public class Task {
         Comment newComment = new Comment(comment, user, date);
         comments.add(newComment);
     }
-    public ArrayList<String> displayComments(Task task){
+    public String displayComments(Task task){
        ArrayList<String> commentList = new ArrayList<String>();
+       String concat = "";
         for(int i = 0; i < comments.size(); ++i){
-            commentList.add(comments.get(i).getComment());
+            commentList.add(comments.get(i).getComment() + " ("+comments.get(i).getUser()+")  |"+comments.get(i).getDate()+"|");
+            concat += "     -" + commentList.get(i) + "\n";
         }
-        return commentList;
+        return concat;
     }
 }

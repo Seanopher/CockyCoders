@@ -7,6 +7,9 @@ import java.util.ArrayList;
  */
 public class Columns {
 
+    /**
+     * Instance Fields
+     */
     private ArrayList<Task> tasks;
     private String title;
     private ArrayList<String> titles;
@@ -53,9 +56,6 @@ public class Columns {
     }
 
     /**
-     * it checks to see if the column exists
-     * if it exists it adds a number to the back of it
-     * 
      * adds the new title to the array list of titles
      * 
      * @param title takes in user input and tests it
@@ -63,6 +63,7 @@ public class Columns {
      */
     public Columns createColumn(String title){
         this.titles.add(title);
+
         return this;
     }
 
@@ -105,6 +106,7 @@ public class Columns {
             tasks.add(task);
             return true;
         }
+
         return false;
     }
 
@@ -122,13 +124,22 @@ public class Columns {
         return false;
     }
 
-    public String displayTasks(){
+    /**
+     * displays the tasks in the columns
+     * creates instance of task list and adds the title to the array
+     * goes through the tasks and puts them in the array
+     * @param task called from the task class
+     * @return the tasklist
+     */
+    public String displayTasks(Task task){
         ArrayList<String> taskList = new ArrayList<String>();
         taskList.add(title + "\n");
         for(int i = 0; i < tasks.size(); ++i)
         {
-            taskList.add(tasks.get(i).getName() + ": "+ tasks.get(i).getDescription() + "\n");
+            taskList.add(tasks.get(i).getName() + ": "+ tasks.get(i).getDescription() + "\n User:" +task.getAssignedUser().getFirstName()
+            +" "+task.getAssignedUser().getLastName()+"\n"+tasks.get(i).displayComments(task));
         }
-        return taskList.toString();
+
+        return taskList.toString().replace("[", "").replace("]", "").replace(",", "");
     }
 }
