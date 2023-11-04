@@ -9,7 +9,7 @@ public class Driver {
     private Project electric_Missles;
     private Project soap_Free_Washers;
     private Project air_Computers;
-    private User atticus, none;
+    private User atticus, none, finch;
     private ArrayList<Project> projects;
 
 
@@ -18,6 +18,7 @@ public class Driver {
         facade = new ProjectFacade();
         atticus = new User("01", "Atticus", "Madden", "Madden23", "AMadden", "ADMIN");
         none = new User("02", "Me", "", "noUser", "Seanopher", "USER");
+        finch = new User("03", "Atticus", "Finch", "FinchMan", "AtticusFinch25", "USER");
         electric_Missles = new Project("\t--------=ELECTRIC MISSILES=--------", "01", null);
         soap_Free_Washers = new Project("Soap Free Washers", "02", null);
         air_Computers = new Project("Air Computers", "03", null);
@@ -52,7 +53,7 @@ public class Driver {
         facade.addTask(toDo, initialize);
         /* Add a comment to the task "Avoid civilians Jeff!" */
         Date date = new Date();
-        facade.addComment("Avoid civilians Jeff!", none, date, initialize);
+        facade.addComment("Avoid civilians Jeff!", atticus, date, initialize);
 
         /* Move the existing task of "Curve the metal to make a cylindrical shape" to the 'Doing' column. */
         /* This task has the existing comments of "Not cylindrical enough" - by Jeff, and "What's a cylinder" by Atticus Finch. */
@@ -61,8 +62,8 @@ public class Driver {
         facade.addTask(toDo, curve);
         facade.changeColumn(toDo, doing, curve);
         facade.addComment("Not cylindrical enough", jeff, date, curve);
-        facade.addComment("What's a cylinder", atticus, date, curve);
-        facade.addComment("How about you do it jeff", none, date, curve);
+        facade.addComment("What's a cylinder", finch, date, curve);
+        facade.addComment("How about you do it jeff", atticus, date, curve);
 
         /* Add a new column called "Abandoned"
         Move an existing task "Make impossible burger possible" which doesn't really relate to the project purpose to "Abandoned" */
