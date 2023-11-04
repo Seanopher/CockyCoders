@@ -47,7 +47,7 @@ public class ProjectFacade {
         user = new User(userType, firstName, lastName, password, username, userType);
         if(userID != null && firstName != null && lastName != null && password != null && userType != null)
         {
-            return this.user.newUser(userID, firstName, lastName, password, username, userType);
+            return user;
         }
         else
             return null;
