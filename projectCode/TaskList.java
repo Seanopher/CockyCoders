@@ -1,17 +1,32 @@
 package projectCode;
 import java.util.ArrayList;
 public class TaskList {
-    private TaskList taskList;
+    private static TaskList taskList;
     private ArrayList<Task> tasks;
 
-    private TaskList(){
-
+    private TaskList()
+    {
+        tasks = new ArrayList<>();
     }
-    public Task getInstance(){
-        return getInstance();
+    public static TaskList getInstance()
+    {
+        if(taskList == null)
+        {
+            taskList = new TaskList();
+        }
+        return taskList;
     }
 
-    public ArrayList<Task> getTasks(String taskName){
-        return this.tasks;
+    public Task getTask(String taskName)
+    {
+        for(Task task : tasks)
+        {
+            if(task.getName().equalsIgnoreCase(taskName))
+            {
+                return task;
+            }
+
+        }
+        return null;
     }
 }
