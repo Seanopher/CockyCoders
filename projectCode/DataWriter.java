@@ -132,4 +132,24 @@ public class DataWriter extends DataConstants{
         
         return taskDetails;
 	}
+
+
+    public static void saveUSers() {
+        UserList User = UserList.getInstance();
+        ArrayList<User> UserList = User.getUser();
+        JSONArray jsonUser = new JSONArray();
+
+        for( int i=0; i< UserList.size(); i++) {
+            jsonUser.add(getUserJSON(UserList.get(i)));
+        }
+        try (FileWriter file = new FileWriter(USER_FILE_NAME)) {
+            file.write(jsonUser.toJSONString());
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 }
