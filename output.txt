@@ -1,10 +1,20 @@
-ToDo - 
-Doing - Curve the metal to make a cylindrical shape. 
-Comments - 
-    Not cylindrical enough 
-    What's a cylinder 
-    How about you do it Jeff. 
-Done - 
-Abandoned - 
-Comments - 
-    Make impossible burger possible. 
+  ************** CODE MISSION POSSIBLE **************
+	--------=ELECTRIC MISSILES=--------
+	 	---= TO-DO =---
+ *Initialize super algorithm to detonate at warp speed.: Description
+ John Goldblum
+     -Avoid civilians Jeff!
+ 
+	 	---= DOING =---
+ *Curve the metal to make a cylindrical shape: Description
+ John Goldblum
+     -Not cylindrical enough
+     -What's a cylinder
+     -How about you do it jeff
+ 
+	 	---= DONE =---
+ 
+	 	---= ABANDONED =---
+ *Make impossible burger possible.: Description
+ John Goldblum
+ 

@@ -118,13 +118,14 @@ public class Columns {
         return false;
     }
 
-    public String displayTasks(){
+    public String displayTasks(Task task){
         ArrayList<String> taskList = new ArrayList<String>();
         taskList.add(title + "\n");
         for(int i = 0; i < tasks.size(); ++i)
         {
-            taskList.add(tasks.get(i).getName() + ": "+ tasks.get(i).getDescription() + "\n");
+            taskList.add(tasks.get(i).getName() + ": "+ tasks.get(i).getDescription() + "\n " +task.getAssignedUser().getFirstName()
+            +" "+task.getAssignedUser().getLastName()+"\n"+tasks.get(i).displayComments(task));
         }
-        return taskList.toString();
+        return taskList.toString().replace("[", "").replace("]", "").replace(",", "");
     }
 }
