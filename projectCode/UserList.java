@@ -1,6 +1,8 @@
 package projectCode;
+
 import java.util.ArrayList;
 import java.util.UUID;
+
 public class UserList {
     private static UserList userList;
     private ArrayList<User> users;
@@ -15,8 +17,6 @@ public class UserList {
         dataLoader = new DataLoader(); 
         users = dataLoader.loadUsers();
     }
-
-
     /*
      * gets instance of UserList
      */
@@ -29,7 +29,11 @@ public class UserList {
         return userList;
     }
 
-
+    /**
+     * Finds the current userID
+     * @param userID The Unique userID
+     * @return The UserID
+     */
     public User getUser(UUID userID)
     {
         String userUUIDtoString = userID.toString(); //changes the UUID into a String
@@ -45,8 +49,6 @@ public class UserList {
             */
         return null;
     }
-
-
     /*
      * logs in user by calling DataLoader for Users and
      * searching list for specific User
@@ -79,17 +81,13 @@ public class UserList {
         }
         return null;
     }
-    
+    /**
+     * Logout method
+     * @param user The user on the project
+     * @return A true value to signal a logout
+     */
     public boolean Logout(User user)
-    { //not sure how to log user out
+    {
         return true;
     }
 }
-
-
-
-
-
-
-
-
