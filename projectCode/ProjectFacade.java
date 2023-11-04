@@ -174,9 +174,9 @@ public class ProjectFacade {
     }
 
     /* display the project's columns */
-    public ArrayList<String> displayColumns(Project project)
+    public ArrayList<String> displayColumns(Project project, Task task)
     {
-        ArrayList<String> columns = project.displayColumns();
+        ArrayList<String> columns = project.displayColumns(task);
         return columns;
     }
 
@@ -188,13 +188,14 @@ public class ProjectFacade {
         column.displayTasks();
     }
     */
-
-     /* displays the task's comments */
+    /* 
+     /* displays the task's comments 
     public ArrayList<String> getComments(Task task)
     {
         ArrayList<String> comments = task.displayComments(task);
         return comments;
     }
+    */
 
     public Task save(Task task){
         return save(task);
