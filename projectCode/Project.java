@@ -79,12 +79,12 @@ public class Project
     {
         return column;
     }
-    public ArrayList<String> displayColumns()
+    public ArrayList<String> displayColumns(Task task)
     {
         ArrayList<String> columnList = new ArrayList<String>();
         for(int i = 0; i < column.size(); ++i)
         {
-            columnList.add(column.get(i).displayTasks());
+            columnList.add(column.get(i).displayTasks(task));
         }
 
         return columnList;
