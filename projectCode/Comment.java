@@ -58,8 +58,11 @@ public class Comment {
         comments.add(newComment);
     }
     /**
-     * 
-     * @return
+     * Getters
+     * List<Comment> comments
+     * String comment
+     * String user (from User class from getUserName method)
+     * String date (from Date class from toString method)
      */
     public List<Comment> getComments() {
         return comments;
@@ -70,7 +73,6 @@ public class Comment {
     public String getUser(){
         return user.getUsername();
     }
-
     public String getDate()
     {
         return date.toString();
