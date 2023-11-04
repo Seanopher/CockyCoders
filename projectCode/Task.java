@@ -5,10 +5,11 @@ import java.util.Date;
 import java.util.UUID;
 
 /**
- * @author Hughes
+ * @author Cocky Coders
  * Creates the object task and assigns user varibles to the task
  */
 public class Task {
+
     /**
      * Instance Fields
      */
@@ -53,10 +54,8 @@ public class Task {
      * @param document
      * @param taskType
      */
-    public Task(String taskName, String description, User assignedUser, String document, TaskType taskType)
-    {
-        if(taskName != null && description != null && assignedUser != null && document != null && taskType != null)
-        {
+    public Task(String taskName, String description, User assignedUser, String document, TaskType taskType){
+        if(taskName != null && description != null && assignedUser != null && document != null && taskType != null){
         this.comments = new ArrayList<Comment>();
         this.taskName = taskName;
         this.description = description;
@@ -66,8 +65,9 @@ public class Task {
         }
     }
 
-
-    //Basic getters
+    /**
+     * getters
+     */
     public String getName(){
         return taskName;
     }
@@ -80,7 +80,6 @@ public class Task {
     public Date getDate(){
         return date;
     }
-    //Adding here to satisfy DataWriter
     public String getDueDate(){
         return null;
     }
@@ -93,6 +92,7 @@ public class Task {
     public ArrayList<Comment> getComments(){
         return comments;
     }
+
     /** 
     * changed to a void (was String) to only change
     * @param Comment uses comment to call the class and method
@@ -100,10 +100,23 @@ public class Task {
     public void comment(Comment comment){
         comments.add(comment);
     }
+
+    /**
+     * adds comments
+     * @param comment
+     * @param user
+     * @param date
+     */
     public void addComment(String comment, User user, Date date) {
         Comment newComment = new Comment(comment, user, date);
         comments.add(newComment);
     }
+
+    /**
+     * displays comments
+     * @param task
+     * @return concatination of comments
+     */
     public String displayComments(Task task){
        ArrayList<String> commentList = new ArrayList<String>();
        String concat = "";
