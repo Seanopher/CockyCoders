@@ -50,10 +50,8 @@ public class User {
      * @param userType
      * @return
      */
-    public void newUser(UUID userID, String firstName, String lastName, String password, String username, String userType, ArrayList<Project> projects)
-    {
-        if(userID != null && firstName != null && lastName != null && password != null && userType != null)
-        {
+    public void newUser(UUID userID, String firstName, String lastName, String password, String username, String userType, ArrayList<Project> projects){
+        if(userID != null && firstName != null && lastName != null && password != null && userType != null){
             this.UUID = userID;
             this.userID = userID.toString();
             this.firstName = firstName;
@@ -65,20 +63,13 @@ public class User {
             
         }
     }
-    
-    /*
-     * method that you call when you have already created a user and are just looking to return the user.
-     * takes in their UUID, firstname, lastName, password, 
-         * and user type
-     */
+
      /**
      * Getters
      */
     public User getUser(UUID userID){
         return userList.getUser(UUID);
     }
-
-
     public String getUUID(){
         return userID;
     }
@@ -108,8 +99,11 @@ public class User {
         }
         return projectList;
     }
-    /*
+    
+    /**
      * takes in a project and adds it to the users ProjectList
+     * @param project
+     * @return
      */
     public boolean joinProject(Project project){
         if(project != null){
