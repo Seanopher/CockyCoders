@@ -4,7 +4,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
+/**
+ * @author Cocky Coders
+ * runs the project with a testing scenario
+ */
 public class Driver {
+
+    /**
+     * Instance Fields
+     */
     private ProjectFacade facade;
     private Project electric_Missles;
     private Project soap_Free_Washers;
@@ -12,8 +20,12 @@ public class Driver {
     private User atticus, none, finch;
     private ArrayList<Project> projects;
 
-
-
+    /**
+     * initializes the instance fields
+     * creates the facade
+     * creates 3 Users
+     * creates 3 Projects
+     */
     Driver(){
         facade = new ProjectFacade();
         atticus = new User("01", "Atticus", "Madden", "Madden23", "AMadden", "ADMIN");
@@ -24,15 +36,20 @@ public class Driver {
         air_Computers = new Project("Air Computers", "03", null);
         
     }
+
+    /**
+     * runs the scenario
+     */
     public void run(){
         scenario();
     }
 
+    /**
+     * 
+     */
     public void scenario(){
         
-
         //System.out.println(atticus.getFirstName() + " " + atticus.getLastName() + " is logged in");
-
 
         facade.joinProject(electric_Missles, atticus);
         facade.joinProject(soap_Free_Washers, atticus);
@@ -96,6 +113,7 @@ public class Driver {
         }
     }
 
+    // main method that runs the project
     public static void main(String[] args) {
         Driver driver = new Driver();
         driver.run();
