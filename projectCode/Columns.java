@@ -7,6 +7,9 @@ import java.util.ArrayList;
  */
 public class Columns {
 
+    /**
+     * Instance Fields
+     */
     private ArrayList<Task> tasks;
     private String title;
     private ArrayList<String> titles;
