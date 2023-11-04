@@ -36,9 +36,9 @@ public class Driver {
         facade.joinProject(electric_Missles, atticus);
         facade.joinProject(soap_Free_Washers, atticus);
         facade.joinProject(air_Computers, atticus);
-        Columns toDo = new Columns("\t \t---= TO-DO =---");
-        Columns doing = new Columns("\t \t---= DOING =---");
-        Columns done = new Columns("\t \t---= DONE =---");
+        Columns toDo = new Columns("         --------= TO-DO =--------");
+        Columns doing = new Columns("        --------= DOING =--------");
+        Columns done = new Columns("         --------= DONE =--------");
         electric_Missles.addColumns(toDo);
         electric_Missles.addColumns(doing);
         electric_Missles.addColumns(done);
@@ -67,7 +67,7 @@ public class Driver {
         /* Add a new column called "Abandoned"
         Move an existing task "Make impossible burger possible" which doesn't really relate to the project purpose to "Abandoned" */
         facade.createColumn("Abandoned");
-        Columns abandoned = new Columns("\t \t---= ABANDONED =---");
+        Columns abandoned = new Columns("       --------= ABANDONED =--------");
         electric_Missles.addColumns(abandoned);
         
         Task burger = new Task("Task: Make impossible burger possible", "\n Description: IS IT POSSIBLE?", none, "Document", TaskType.CODE);

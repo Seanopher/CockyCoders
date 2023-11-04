@@ -1,22 +1,22 @@
   ************** CODE MISSION POSSIBLE **************
 	--------=ELECTRIC MISSILES=--------
-	 	---= TO-DO =---
+         --------= TO-DO =--------
  Task: Initialize super algorithm to detonate at warp speed: 
  Description: MAKE SURE TO DETONATE AT WARP SPEED
  User:Jeff Goldblum
-     -Avoid civilians Jeff! (Seanopher)  |Fri Nov 03 20:45:38 EDT 2023|
+     -Avoid civilians Jeff! (Seanopher)  |Fri Nov 03 20:48:03 EDT 2023|
  
-	 	---= DOING =---
+        --------= DOING =--------
  Task: Curve the metal to make a cylindrical shape: 
  Description: MAKE SURE TO WEAR GLOVES WHEN CURVING METAL
  User:Jeff Goldblum
-     -Not cylindrical enough (JGoldblum)  |Fri Nov 03 20:45:38 EDT 2023|
-     -What's a cylinder (AMadden)  |Fri Nov 03 20:45:38 EDT 2023|
-     -How about you do it jeff (Seanopher)  |Fri Nov 03 20:45:38 EDT 2023|
+     -Not cylindrical enough (JGoldblum)  |Fri Nov 03 20:48:03 EDT 2023|
+     -What's a cylinder (AMadden)  |Fri Nov 03 20:48:03 EDT 2023|
+     -How about you do it jeff (Seanopher)  |Fri Nov 03 20:48:03 EDT 2023|
  
-	 	---= DONE =---
+         --------= DONE =--------
  
-	 	---= ABANDONED =---
+       --------= ABANDONED =--------
  Task: Make impossible burger possible: 
  Description: IS IT POSSIBLE?
  User:Jeff Goldblum
