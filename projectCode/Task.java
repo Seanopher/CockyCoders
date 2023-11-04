@@ -1,22 +1,27 @@
 package projectCode;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
+
 /**
  * @author Hughes
  * Creates the object task and assigns user varibles to the task
  */
 public class Task {
+    /**
+     * Instance Fields
+     */
     protected UUID taskID;
     public String taskName;
     public String description;
     public User assignedUser;
-    //public ArrayList<String> backLog;
     public Date date;
     public String document;
     public ArrayList<Comment> comments;
     public TaskType taskType;
-    //private ArrayList<Task> history;
+    private ArrayList<Task> history;
+
     /**
      * Creates a new task
      * @param taskName The name of the task
@@ -26,7 +31,6 @@ public class Task {
      * @param taskType The type of the task, so it can be idenified by the user
      * @return a new task
      */
-
     public void newTask(String taskName, String description, User assignedUser, String document, TaskType taskType, ArrayList<Comment> comments){
         if ( taskName != null && description != null && assignedUser != null && document != null && taskType != null){
             
@@ -38,9 +42,17 @@ public class Task {
             this.comments = new ArrayList<>();
             
         }
-        
     }
 
+    /**
+     * Parameter constructor 
+     * sets the Task
+     * @param taskName
+     * @param description
+     * @param assignedUser
+     * @param document
+     * @param taskType
+     */
     public Task(String taskName, String description, User assignedUser, String document, TaskType taskType)
     {
         if(taskName != null && description != null && assignedUser != null && document != null && taskType != null)
