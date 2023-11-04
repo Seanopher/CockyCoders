@@ -130,7 +130,7 @@ public class Columns {
         taskList.add(title + "\n");
         for(int i = 0; i < tasks.size(); ++i)
         {
-            taskList.add(tasks.get(i).getName() + ": "+ tasks.get(i).getDescription() + "\n " +task.getAssignedUser().getFirstName()
+            taskList.add(tasks.get(i).getName() + ": "+ tasks.get(i).getDescription() + "\n User:" +task.getAssignedUser().getFirstName()
             +" "+task.getAssignedUser().getLastName()+"\n"+tasks.get(i).displayComments(task));
         }
         return taskList.toString().replace("[", "").replace("]", "").replace(",", "");

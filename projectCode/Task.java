@@ -96,7 +96,7 @@ public class Task {
        ArrayList<String> commentList = new ArrayList<String>();
        String concat = "";
         for(int i = 0; i < comments.size(); ++i){
-            commentList.add(comments.get(i).getComment());
+            commentList.add(comments.get(i).getComment() + " ("+comments.get(i).getUser()+")  |"+comments.get(i).getDate()+"|");
             concat += "     -" + commentList.get(i) + "\n";
         }
         return concat;

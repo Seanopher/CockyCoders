@@ -70,5 +70,10 @@ public class Comment {
     public String getUser(){
         return user.getUsername();
     }
+
+    public String getDate()
+    {
+        return date.toString();
+    }
 }
 
