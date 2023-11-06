@@ -9,6 +9,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class DataWriter extends DataConstants{
+
     public boolean saveUsers(){
         //Intializing the UserList and getting the Users
         UserList userList = UserList.getInstance();
@@ -32,8 +33,8 @@ public class DataWriter extends DataConstants{
     }
 
     public boolean saveTasks(){
-        Task tasks = Task.getInstance();
-		ArrayList<Task> addTask = tasks.getTask();
+        TaskList taskList = TaskList.getInstance();
+		ArrayList<Task> addTask = taskList.getTasks();
 		JSONArray jsonTasks = new JSONArray();
 		
 		//creating all the json objects

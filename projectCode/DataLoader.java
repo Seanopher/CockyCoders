@@ -115,7 +115,7 @@ public class DataLoader extends DataConstants {
                         objTaskList.add(task);
                     }
 
-                    columns.add(new newColumns(columnTitle, taskTitles));
+                    columns.add(new Columns(columnTitle, taskTitles));
                 }
 
                 projects.add(Project.newProject(name, id, users, columns));

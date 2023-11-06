@@ -13,17 +13,20 @@ public class TaskList {
      */
     private static TaskList taskList;
     private ArrayList<Task> tasks;
+    private DataLoader dataLoader;
 
     /**
      * constructor method
      */
     private TaskList(){
-        tasks = new ArrayList<>();
+        dataLoader = new DataLoader(); 
+        tasks = dataLoader.loadTasks();
     }
 
     /**
      * Getters
      * Instance: tests if task list is null then returns the task list
+     * Returns the ArrayList of Tasks
      * task: takes in task name runs through list and tests if the name is the same as the task name
      */
     public static TaskList getInstance(){
@@ -31,6 +34,11 @@ public class TaskList {
             taskList = new TaskList();
         return taskList;
     }
+
+    public ArrayList<Task> getTasks() {
+        return tasks;
+    }
+
     public Task getTask(String taskName){
         for(Task task : tasks){
             if(task.getName().equalsIgnoreCase(taskName))
