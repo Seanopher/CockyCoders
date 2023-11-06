@@ -10,14 +10,20 @@ import org.json.simple.JSONObject;
 
 public class DataWriter extends DataConstants{
 
+    
+    /**
+     * Saving Users
+     * Gets UserJSON and writes to the JSON User file
+     * @return boolean
+     */
     public boolean saveUsers(){
         //Intializing the UserList and getting the Users
         UserList userList = UserList.getInstance();
-        ArrayList<User> users = userList.getUsers();
+        ArrayList<User> addUsers = userList.getUsers();
 		JSONArray jsonUsers = new JSONArray();
 		
 		//Creating all the JSON 
-		for(User user : users) {
+		for(User user : addUsers) {
 			jsonUsers.add(getUserJSON(user));
 		}
 		
@@ -32,27 +38,42 @@ public class DataWriter extends DataConstants{
         }
     }
 
+
+    /**
+     * Saving Tasks
+     * Gets TaskJSON and writes to the JSON Task file
+     * @return boolean
+     */
     public boolean saveTasks(){
+        //Intializing 
         TaskList taskList = TaskList.getInstance();
 		ArrayList<Task> addTask = taskList.getTasks();
 		JSONArray jsonTasks = new JSONArray();
 		
-		//creating all the json objects
-		for(int i=0; i< addTask.size(); i++) {
-			jsonTasks.add(getTaskJSON(addTask.get(i)));
+		//Adds each JSON task to the JSONArray from getTaskJSON
+		for(Task task : addTask) {
+			jsonTasks.add(getTaskJSON(task));
 		}
 		
-		//Write JSON file
+		//Writes the JSONArray Tasks to the JSON file
         try (FileWriter file = new FileWriter(TASK_FILE_NAME)) {
  
             file.write(jsonTasks.toJSONString());
             file.flush();
+            return true;
  
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
+
+    /**
+     * Saving Projects
+     * Gets ProjectJSON and writes to the JSON Project file
+     * @return boolean
+     */
     public boolean saveProject(){
         Project projects = Project.getInstance();
 		ArrayList<Project> addProject = projects.getProject();
@@ -74,6 +95,12 @@ public class DataWriter extends DataConstants{
         }
     }
 
+
+    /**
+     * Saving Users
+     * Gets UserJSON and writes to the JSON User file
+     * @return boolean
+     */
     public static JSONObject getUserJSON(User user) {
 		JSONObject userDetails = new JSONObject();
 
@@ -95,21 +122,11 @@ public class DataWriter extends DataConstants{
 	}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /**
+     * Saving Users
+     * Gets UserJSON and writes to the JSON User file
+     * @return boolean
+     */
     public static JSONObject getProjectJSON(Project project) {
 		JSONObject projectDetails = new JSONObject();
 
@@ -120,6 +137,12 @@ public class DataWriter extends DataConstants{
         return projectDetails;
 	}
 
+
+    /**
+     * Saving Users
+     * Gets UserJSON and writes to the JSON User file
+     * @return boolean
+     */
     public static JSONObject getTaskJSON(Task task) {
 		JSONObject taskDetails = new JSONObject();
 

@@ -36,6 +36,9 @@ public class ProjectList {
         return projectList;
     }
 
+    public ArrayList<Project> getProjects() {
+        return projects;
+    }
 
     public Project getProject(String projectID){
         for (Project project : projects){
