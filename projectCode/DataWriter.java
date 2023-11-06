@@ -3,31 +3,31 @@ package projectCode;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.UUID;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class DataWriter extends DataConstants{
     public boolean saveUsers(){
-        UserList users = UserList.getInstance();
-		
-
-
+        //Intializing the UserList and getting the Users
+        UserList userList = UserList.getInstance();
+        ArrayList<User> users = userList.getUsers();
 		JSONArray jsonUsers = new JSONArray();
 		
 		//Creating all the JSON 
-		for(int i=0; i< addUsers.size(); i++) {
-			jsonUsers.add(getUserJSON(addUsers.get(i)));
+		for(User user : users) {
+			jsonUsers.add(getUserJSON(user));
 		}
 		
 		//Write JSON file
         try (FileWriter file = new FileWriter(USER_FILE_NAME)) {
- 
             file.write(jsonUsers.toJSONString());
             file.flush();
- 
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
@@ -81,11 +81,33 @@ public class DataWriter extends DataConstants{
 		userDetails.put(USER_USERNAME, user.getUsername());
         userDetails.put(USER_PASSWORD, user.getPassword());
 		userDetails.put(USER_USERTYPE, user.getUserType());
-        userDetails.put(USER_PROJECTS, user.getProjects());
-		userDetails.put(USER_POINTS, user.getPoints());
+
+        JSONArray projectArray = new JSONArray();
+        ArrayList<Project> userProjects = user.getProjects();
+        for(Project project : userProjects){
+            String projectId = project.getProjectID();
+            projectArray.add(projectId);
+        }
+        userDetails.put(USER_PROJECTS, projectArray);
         
         return userDetails;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public static JSONObject getProjectJSON(Project project) {
 		JSONObject projectDetails = new JSONObject();

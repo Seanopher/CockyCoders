@@ -29,6 +29,10 @@ public class UserList {
         return userList;
     }
 
+    public ArrayList<User> getUsers() {
+        return users;
+    }
+
     /**
      * Finds the current userID
      * @param userID The Unique userID
