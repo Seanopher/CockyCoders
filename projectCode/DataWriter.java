@@ -73,15 +73,6 @@ public class DataWriter extends DataConstants{
         }
     }
 
-    public boolean saveColumns(){
-        //no JSON file?
-        return true;
-    }
-
-    public boolean saveComments(){
-        //no JSON file?
-        return true;
-    }
     public static JSONObject getUserJSON(User user) {
 		JSONObject userDetails = new JSONObject();
 

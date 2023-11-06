@@ -1,11 +1,14 @@
 package projectCode;
 
 import java.io.FileReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.UUID;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import java.text.ParseException;
+import java.util.Date;
 
 /*
  * Taking in the JSON file and parsing it into objects
@@ -49,6 +52,8 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
+
+
     /*
      * Taking in the JSON file and parsing it into objects
      * Returns an arraylist of Projects for ProjectList
@@ -64,11 +69,16 @@ public class DataLoader extends DataConstants {
             JSONObject obj = (JSONObject) new JSONParser().parse(reader);
             JSONArray projectArray = (JSONArray) obj.get("project");
 
+            //Intializing task and user lists
+            TaskList taskList = TaskList.getInstance();
+            UserList userList = UserList.getInstance();
+
+
             //Looping through each Project in the JSON file
             for (Object projectObj : projectArray) 
             {
-                //creating a JSON object for each project in the json file
-                JSONObject projectDetails = (JSONObject) obj.get("project");
+                //Creating a JSON object for each project in the json file
+                JSONObject projectDetails = (JSONObject) obj.get("project");//might be projectObj
 
                 //Adding details to Project object
                 String id = (String) projectDetails.get(PROJECT_ID);
@@ -79,15 +89,20 @@ public class DataLoader extends DataConstants {
                 ArrayList<User> users = new ArrayList<>();
                 for (Object user : projectUserIDs) 
                 {
-                    User userlist = UserList.getUser((String) user);
-                    users.add((String) user);
+                    if(user instanceof String) {
+                        String userString = (String) user;
+                        UUID userUUID = UUID.fromString(userString);
+                        User userlist = userList.getUser(userUUID);
+                        users.add(userlist);
+                    }
+                    
                 }
-
+                
                 //Adding Columns detail to Project Object
                 JSONArray columnsArray = (JSONArray) projectDetails.get("columns");
                 ArrayList<Columns> columns = new ArrayList<>();
                 ArrayList<Task> objTaskList = new ArrayList<>();
-                TaskList taskList = TaskList.getInstance();
+                
 
                 for (Object columnObj : columnsArray) 
                 {
@@ -119,39 +134,100 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
+
+
     /*
      * Taking in the JSON file and parsing it into objects
      * Returns an arraylist of Tasks for TaskList
      */
-    public boolean loadTasks() {
+    public ArrayList<Task> loadTasks() {
         ArrayList<Task> tasks = new ArrayList<Task>();
 
         try {
+            //Reading the JSON file by creating a general JSON Object
+            //then adding an array of Tasks to the general Object
             FileReader reader = new FileReader(TASK_FILE_NAME);
             JSONObject obj = (JSONObject) new JSONParser().parse(reader);
-            JSONObject taskDetails = (JSONObject) obj.get("task");
+            JSONArray taskArray = (JSONArray) obj.get("task");
+            
+            //Looping through each Task in the JSON file
+            for (Object taskObj : taskArray) {
+                JSONObject taskDetails = (JSONObject) taskObj;
 
-            for (int i = 0; i < tasksJSON.size(); i++) {
-                JSONObject taskJSON = (JSONObject) tasksJSON.get(i);
-                String taskName = (String) taskJSON.get(TASK_NAME);
-                String description = (String) taskJSON.get(TASK_DESCRIPTION);
-                String assignedUser = (String) taskJSON.get(TASK_ASSIGNED_USER); // will need to search the userList and
-                                                                                 // return arraylist, same as columns
-                String taskDate = (String) taskJSON.get(TASK_DATE); // turn into type date
-                String document = (String) taskJSON.get(TASK_DOCUMENT);
-                String taskType = (String) taskJSON.get(TASK_TYPE);
+                //Adding details to the Task object
+                UUID taskID = UUID.fromString((String) taskDetails.get(TASK_ID));
+                String taskName = (String) taskDetails.get(TASK_NAME);
+                String description = (String) taskDetails.get(TASK_DESCRIPTION);
+                String document = (String) taskDetails.get(TASK_DOCUMENT);
 
-                // comments will need the same as the columns
-                String comments = (String) taskJSON.get(TASK_COMMENTS);
+                //Adding the ArrayList<User> to the Task Object
+                JSONArray assignedUser = (JSONArray) taskDetails.get(TASK_ASSIGNED_USER);
+                ArrayList<User> assignedUsers = new ArrayList<>();
+                for (Object user : assignedUser) 
+                {
+                    if(user instanceof String) {
+                        String userString = (String) user;
+                        UUID userUUID = UUID.fromString(userString);
+                        User userlist = UserList.getInstance().getUser(userUUID);
+                        assignedUsers.add(userlist);
+                    }
+                }
 
-                tasks.add(
-                        new Task(taskName, description, assignedUser, document, taskType));
-            } // String taskName, String description, User assignedUser, String document,
-              // TaskType taskType
-            return true;
+                //Adding date to the Task Object 
+                //Parsing the String into a Date
+                String date = (String) taskDetails.get(TASK_DATE); 
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                Date taskDate = dateFormat.parse(date);
+
+                //Adding TaskType to the Task Object 
+                //Parsing the String into a TaskType
+                String taskTypeString = (String) taskDetails.get(TASK_TYPE); //turn into the task type? 
+                TaskType taskType = TaskType.valueOf(taskTypeString);
+
+                //Comments will need the same as the columns
+                JSONArray commentsArray = (JSONArray) taskDetails.get(TASK_COMMENTS);
+                ArrayList<Comment> comments = new ArrayList<>();
+                
+                for (Object commentObj : commentsArray) 
+                {
+                    //Creating a JSONObject for the Comment
+                    JSONObject commentDetails = (JSONObject) commentObj;
+
+                    //Adding the String Comment to the Comment Object
+                    String comment = (String) commentDetails.get("comment");
+                    
+                    //Adding the User to the Comment Object
+                    String userIDString = (String) commentDetails.get("userID");
+                    UUID userUUID = UUID.fromString(userIDString);
+                    User userlist = UserList.getInstance().getUser(userUUID);
+
+                    JSONArray commentThreadArray = (JSONArray) commentDetails.get("comments");
+
+                    //Adding the ArrayList of Comments (thread) detail into the Comment Object
+                    ArrayList<String> commentThread = new ArrayList<>();
+                    for (Object taskTitle : taskTitlesArray) 
+                    {
+                        //Finding the Task in the TaskList then parsing into a String
+                        Task task = taskList.getTask((String) taskTitle);
+                        objTaskList.add(task);
+                    }
+
+                    columns.add(new newColumns(columnTitle, taskTitles));
+                }
+                String comments = (String) taskDetails.get(TASK_COMMENTS);
+
+                tasks.add(new Task(taskID, taskName, description, assignedUsers, document, taskType));
+            } 
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
-        return false;
     }
 }
+// "comments": [
+//             {"comment": "this is comment1", "userID": 12345, "date": "10-11-2023", "comments":[ "commentA", "commentB", "commentC"]},
+//             {"comment": "this is comment2", "userID": 54321, "date": "12-09-2023", "comments":[
+//                 "commentA", "commentB", "commentC"]},
+//             {"comment": "this is comment3", "userID": 49134, "date": "12-12-2023", "comments":[
+//                 "commentA", "commentB", "commentC"]}
+//         ],
