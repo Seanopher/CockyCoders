@@ -201,22 +201,19 @@ public class DataLoader extends DataConstants {
                     UUID userUUID = UUID.fromString(userIDString);
                     User userlist = UserList.getInstance().getUser(userUUID);
 
-                    JSONArray commentThreadArray = (JSONArray) commentDetails.get("comments");
-
                     //Adding the ArrayList of Comments (thread) detail into the Comment Object
+                    JSONArray commentThreadArray = (JSONArray) commentDetails.get("comments");
                     ArrayList<String> commentThread = new ArrayList<>();
-                    for (Object taskTitle : taskTitlesArray) 
-                    {
-                        //Finding the Task in the TaskList then parsing into a String
-                        Task task = taskList.getTask((String) taskTitle);
-                        objTaskList.add(task);
+                    
+                    for(Object commentThreadObj : commentThreadArray){
+                        String threadComment = (String) commentThreadObj;
+                        commentThread.add(threadComment);
                     }
 
-                    columns.add(new newColumns(columnTitle, taskTitles));
+                    comments.add(new newComment(comment, userlist, commentThread));
                 }
-                String comments = (String) taskDetails.get(TASK_COMMENTS);
 
-                tasks.add(new Task(taskID, taskName, description, assignedUsers, document, taskType));
+                tasks.add(new Task(taskID, taskName, description, assignedUsers, document, taskType, comments));
             } 
         } catch (Exception e) {
             e.printStackTrace();
@@ -224,10 +221,3 @@ public class DataLoader extends DataConstants {
         }
     }
 }
-// "comments": [
-//             {"comment": "this is comment1", "userID": 12345, "date": "10-11-2023", "comments":[ "commentA", "commentB", "commentC"]},
-//             {"comment": "this is comment2", "userID": 54321, "date": "12-09-2023", "comments":[
-//                 "commentA", "commentB", "commentC"]},
-//             {"comment": "this is comment3", "userID": 49134, "date": "12-12-2023", "comments":[
-//                 "commentA", "commentB", "commentC"]}
-//         ],
