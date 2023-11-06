@@ -35,14 +35,7 @@ public class DataLoader extends DataConstants {
                 String userType = (String) userJSON.get(USER_USERTYPE);
                 // String projects = (String)userJSON.get(USER_PROJECTS);
 
-                User user = newUser(
-                        userID,
-                        firstName,
-                        lastName,
-                        password,
-                        username,
-                        userType,
-                        projectList);
+                User user = newUser(userID, firstName, lastName, password, username, userType, projectList);
                 users.add(user);
             }
             return users;
@@ -144,6 +137,7 @@ public class DataLoader extends DataConstants {
         ArrayList<Task> tasks = new ArrayList<Task>();
 
         try {
+            
             //Reading the JSON file by creating a general JSON Object
             //then adding an array of Tasks to the general Object
             FileReader reader = new FileReader(TASK_FILE_NAME);
