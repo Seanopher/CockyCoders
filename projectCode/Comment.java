@@ -21,7 +21,7 @@ public class Comment {
     private List<Comment> comments = new ArrayList<>();
 
     /**
-     * Constructor classes
+     * Parameter Constructor classes
      * Creates instances of the varibles associated with comment
      * @param comment the message from the user
      * @param user the person writing the comment

@@ -14,31 +14,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class CommentTest {
-/* 
-    @BeforeClass
-    public static void oneTimeSetup(){
-
-    }
-
-    @AfterClass
-    public static void oneTimeTearDown(){
-
-    }
-
-    
-    @BeforeEach
-	public static void setup() {
-		//runs before each test
-	}
-	
-	@AfterEach
-	public static void tearDown() {
-		//runs after each test
-	}
-*/
 
     /**
-     * creates and instance of comments
+     * AddComments Tests
+     * creates an instance of comments
      * adds the comment ino the array of comments
      * calls getComment 
      * 
@@ -54,7 +33,21 @@ public class CommentTest {
         List<Comment> comments = comment.getCommentThread();
 
         assertEquals(2, comments.size());
+    }
+    @Test
+    public void testAddCommentOriginalComment(){
+        Comment comment = new Comment("this is my comment", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date());
+        comment.createNewComment("Comment reply", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date(), comment);
+        List<Comment> comments = comment.getCommentThread();
+
         assertTrue(comments.contains(new Comment("this is my comment", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date())));
+    }
+    @Test
+    public void testAddCommentSecondComment(){
+        Comment comment = new Comment("this is my comment", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date());
+        comment.createNewComment("Comment reply", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date(), comment);
+        List<Comment> comments = comment.getCommentThread();
+
         assertTrue(comments.contains(new Comment("Comment reply", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date())));
     }
 
@@ -68,15 +61,21 @@ public class CommentTest {
      * assertTFalse: expecting a return of false (the array to have something in it)
      */
     @Test
-    public void testGetComment(){
+    public void testGetCommentNotNull(){
         Comment comment = new Comment("this is my comment", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date());
         comment.createNewComment("Comment reply", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date(), comment);
         List<Comment> comments = comment.getCommentThread();
 
         assertNotNull(comments);
+    }
+    @Test
+    public void testGetCommentIsFalse(){
+        Comment comment = new Comment("this is my comment", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date());
+        comment.createNewComment("Comment reply", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date(), comment);
+        List<Comment> comments = comment.getCommentThread();
+
         assertFalse(comments.isEmpty());
     }
-    
 
 
 }
