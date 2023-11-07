@@ -50,8 +50,8 @@ public class CommentTest {
     @Test
     public void testAddCommentSize(){
         Comment comment = new Comment("this is my comment", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date());
-        comment.addComment("Comment reply", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date());
-        List<Comment> comments = comment.getComments();
+        comment.createNewComment("Comment reply", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date(), comment);
+        List<Comment> comments = comment.getCommentThread();
 
         assertEquals(2, comments.size());
         assertTrue(comments.contains(new Comment("this is my comment", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date())));
@@ -70,8 +70,8 @@ public class CommentTest {
     @Test
     public void testGetComment(){
         Comment comment = new Comment("this is my comment", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date());
-        comment.addComment("Comment reply", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date());
-        List<Comment> comments = comment.getComments();
+        comment.createNewComment("Comment reply", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date(), comment);
+        List<Comment> comments = comment.getCommentThread();
 
         assertNotNull(comments);
         assertFalse(comments.isEmpty());
