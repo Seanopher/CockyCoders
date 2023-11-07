@@ -57,16 +57,14 @@ public class Comment {
     public Comment createNewComment(String comment, User user, Date date, Comment parentComment) {
         Comment newComment;
         if (parentComment == null) {
-            // This is a top-level comment
             newComment = new Comment(comment, user, date);
         } else {
-            // This is a reply to an existing comment
             ArrayList<Comment> commentThread = parentComment.getCommentThread();
             Comment replyComment = new Comment(comment, user, date);
             commentThread.add(replyComment);
             newComment = new Comment(comment, user, date, commentThread);
         }
-        // Add the new comment to its parent's replies (or the top-level comments list if it's a top-level comment)
+        
         if (parentComment == null) {
             comments.add(newComment);
         } else {
