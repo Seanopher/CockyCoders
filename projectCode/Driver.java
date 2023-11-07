@@ -122,8 +122,8 @@ public class Driver {
     }
 
     // main method that runs the project
-    public static void main(String[] args) {
-        Driver driver = new Driver();
-        driver.run();
-    }
+    // public static void main(String[] args) {
+    //     Driver driver = new Driver();
+    //     driver.run();
+    // }
 }

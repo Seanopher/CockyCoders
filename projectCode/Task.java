@@ -2,6 +2,7 @@ package projectCode;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -16,12 +17,12 @@ public class Task {
     protected UUID taskID;
     public String taskName;
     public String description;
-    public User assignedUser;
-    public Date date;
+    private List<UUID> assignedUserIDs;
+    private Date taskDate;
     public String document;
-    public ArrayList<Comment> comments;
+    public List<Comment> comments;
     public TaskType taskType;
-    private ArrayList<Task> history;
+    //private ArrayList<Task> history; never used
 
     /**
      * Creates a new task
@@ -32,37 +33,16 @@ public class Task {
      * @param taskType The type of the task, so it can be idenified by the user
      * @return a new task
      */
-    public void newTask(String taskName, String description, User assignedUser, String document, TaskType taskType, ArrayList<Comment> comments){
-        if ( taskName != null && description != null && assignedUser != null && document != null && taskType != null){
-            
-            this.taskName = taskName;
-            this.description = description;
-            this.assignedUser = assignedUser;
-            this.document = document;
-            this.taskType = taskType;
-            this.comments = new ArrayList<>();
-            
-        }
-    }
 
-    /**
-     * Parameter constructor 
-     * sets the Task
-     * @param taskName
-     * @param description
-     * @param assignedUser
-     * @param document
-     * @param taskType
-     */
-    public Task(String taskName, String description, User assignedUser, String document, TaskType taskType){
-        if(taskName != null && description != null && assignedUser != null && document != null && taskType != null){
-        this.comments = new ArrayList<Comment>();
+    public Task(UUID taskID, String taskName, String description, List<UUID> assignedUserIDs, String document, Date taskDate, TaskType taskType, List<Comment> comments) {
+        this.taskID = taskID;
         this.taskName = taskName;
         this.description = description;
-        this.assignedUser = assignedUser;
+        this.assignedUserIDs = assignedUserIDs;
         this.document = document;
+        this.taskDate = taskDate;
         this.taskType = taskType;
-        }
+        this.comments = comments;
     }
 
     /**
@@ -71,14 +51,17 @@ public class Task {
     public String getName(){
         return taskName;
     }
+    public UUID getID(){
+        return taskID;
+    }
     public String getDescription(){
         return description;
     }
-    public User getAssignedUser(){
-        return assignedUser;
+    public List<UUID> getAssignedUsers(){
+        return assignedUserIDs;
     }
     public Date getDate(){
-        return date;
+        return taskDate;
     }
     public String getDueDate(){
         return null;
@@ -89,7 +72,7 @@ public class Task {
     public TaskType getTaskType(){
         return taskType;
     }
-    public ArrayList<Comment> getComments(){
+    public List<Comment> getComments(){
         return comments;
     }
 

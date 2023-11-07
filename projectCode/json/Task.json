@@ -1,0 +1,38 @@
+{
+  "task": [
+    {
+      "id": "c8e86b75-8c76-4fb9-bda3-4f7d387a875d",
+      "taskName": "task1",
+      "description": "this is the description for task1",
+      "assignedUser": [
+        "550e8400-e29b-41d4-a716-446655440000",
+        "550e8400-e29b-41d4-a716-446655440000",
+        "550e8400-e29b-41d4-a716-446655440000"
+      ],
+      "date": "2023-08-28",
+      "document": "document1.pdf",
+      "taskType": "BUG",
+      "comments": [
+        {
+          "comment": "this is comment1",
+          "userID": "550e8400-e29b-41d4-a716-446655440000",
+          "date": "2023-11-23",
+          "replies": [
+            {
+              "comment": "commentA",
+              "userID": "550e8400-e29b-41d4-a716-446655440000",
+              "date": "2023-11-23",
+              "replies": [
+                {
+                  "comment": "replyA",
+                  "userID": "550e8400-e29b-41d4-a716-446655440000",
+                  "date": "2023-11-23"
+                }
+              ]
+            }
+          ]
+    }
+      ]
+    }
+  ]
+}

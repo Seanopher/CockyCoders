@@ -1,16 +1,16 @@
 {
-    "project": {
-        "id":"uuid",
+    "project": [{
+        "id":"4d5e6a45-6d0b-4792-90d0-8c715e12a0a7",
         "name": "project1",
         "users": [
-            "507f1f77bcf86cd799439011",
-            "00000020f51bb4362eee2a4d",
-            "75hadhwjaapvl09234bbcadw"
+            "14ebf76a-25f6-45a2-bf7e-4c1f5e906df3",
+            "14ebf76a-25f6-45a2-bf7e-4c1f5e906df3",
+            "14ebf76a-25f6-45a2-bf7e-4c1f5e906df3"
         ],
         "columns": [
             {"title": "column1", "taskTitles": ["title1", "title2", "title3"]},
             {"title": "column2", "taskTitles": ["title4", "title5", "title6"]},
             {"title": "column3", "taskTitles": ["title7", "title8", "title9"]}
         ]
-    }
+    }]
 }

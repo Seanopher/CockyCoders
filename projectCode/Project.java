@@ -44,12 +44,20 @@ public class Project {
      * @param users
      * @param column
      */
-    public void newProject(String name, String projectID, ArrayList<User> users, ArrayList<Columns> column){
-        this.name = name;
-        this.pID = projectID;
-        this.users = users;
-        this.column = column;
+    // public void newProject(String name, String projectID, ArrayList<User> users, ArrayList<Columns> column){
+    //     this.name = name;
+    //     this.pID = projectID;
+    //     this.users = users;
+    //     this.column = column;
+    // } newProject(String, String, ArrayList<User>, ArrayList<Columns>)
+
+    public Project newProject(String name, String projectID, ArrayList<User> users, ArrayList<Columns> column){
+        Project project = new Project(name, projectID, users);
+        project.setColumns(column);
+        return project;
     }
+
+
 
     /**
      * Getters
@@ -67,6 +75,14 @@ public class Project {
     }
     public ArrayList<Columns> getColumns(){
         return column;
+    }
+
+    /**
+     * Setters
+     * @param column
+     */
+    public void setColumns(ArrayList<Columns> column){
+        this.column = column;
     }
 
     /**

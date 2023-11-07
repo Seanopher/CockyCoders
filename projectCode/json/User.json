@@ -1,0 +1,30 @@
+{
+  "user": [
+    {
+      "userID": "550e8400-e29b-41d4-a716-446655440000",
+      "firstName": "John",
+      "lastName": "Doe",
+      "username": "MrJohnDoe221",
+      "password": "testerPassword1",
+      "userType": "Admin",
+      "projects": [
+        "39e48db4-85fb-4d8a-9c70-855e4cb01074",
+        "8de06df3-0fb9-4c58-9f8e-1b7ce1cc8f4e",
+        "a87a9e14-e804-482c-b006-395b8e21e030"
+      ]
+    },
+    {
+        "userID": " f47ac10b-58cc-4372-a567-0e02b2c3d479",
+        "firstName": "John",
+        "lastName": "Doe",
+        "username": "MrJohnDoe222",
+        "password": "testerPassword2",
+        "userType": "Admin",
+        "projects": [
+          "39e48db4-85fb-4d8a-9c70-855e4cb01074",
+          "4d5e6a45-6d0b-4792-90d0-8c715e12a0a7",
+          "14ebf76a-25f6-45a2-bf7e-4c1f5e906df3"
+        ]
+      }
+  ]
+}

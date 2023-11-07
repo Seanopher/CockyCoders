@@ -24,10 +24,12 @@ public class Columns {
         this.title = title;
         this.titles = new ArrayList<>();
     }
-    public void newColumns(ArrayList<Task> tasks, String title, ArrayList<String> titles){
-        this.tasks = tasks;
-        this.title = title;
-        this.titles = titles;
+
+    public Columns newColumns(ArrayList<Task> tasks, String title, ArrayList<String> titles){
+        Columns columns = new Columns(title);
+        columns.setTasks(tasks);
+        columns.setTitles(titles);
+        return columns;
     }
     /**
      * getters and setters
@@ -135,9 +137,9 @@ public class Columns {
         ArrayList<String> taskList = new ArrayList<String>();
         taskList.add(title + "\n");
         for(int i = 0; i < tasks.size(); ++i)
-        {
-            taskList.add(tasks.get(i).getName() + ": "+ tasks.get(i).getDescription() + "\n User:" +task.getAssignedUser().getFirstName()
-            +" "+task.getAssignedUser().getLastName()+"\n"+tasks.get(i).displayComments(task));
+        {//will have to search through userlist to find each user in the List<User> to display specific users
+           // taskList.add(tasks.get(i).getName() + ": "+ tasks.get(i).getDescription() + "\n User:" +task.getAssignedUser().getFirstName()
+           // +" "+task.getAssignedUser().getLastName()+"\n"+tasks.get(i).displayComments(task));
         }
 
         return taskList.toString().replace("[", "").replace("]", "").replace(",", "");
