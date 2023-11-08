@@ -95,6 +95,9 @@ public class Comment {
     public User getUser(){
         return user;
     }
+    public String getUserName(){
+        return user.getUsername();
+    }
     public void setUser(User user) {
         this.user = user;
     }

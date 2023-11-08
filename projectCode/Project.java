@@ -18,6 +18,7 @@ public class Project {
     protected ArrayList<User> users;
     protected ArrayList<Columns> column;
     private static Project project;
+    public User user;
     
     /**
      * parameter constructor 
@@ -73,9 +74,14 @@ public class Project {
     public ArrayList<User> getUsers(){
         return users;
     }
+    public String getUserName(){
+        return user.getUsername();
+    }
+    
     public ArrayList<Columns> getColumns(){
         return column;
     }
+    
 
     /**
      * Setters

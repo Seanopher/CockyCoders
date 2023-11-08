@@ -12,7 +12,7 @@ public class ProjectList {
      * Instance Fields
      */
     private static ProjectList projectList;
-    private ArrayList<Project> projects;
+    public ArrayList<Project> projects;
     private DataLoader dataLoader;
 
     /**
