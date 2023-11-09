@@ -38,6 +38,7 @@ public class DataWriter extends DataConstants {
      * with the keys splitting the sections.
      */
     public static JSONArray saveComment (List<Comment> commentsList) {
+        //List<Comment> commentList = comment.getComment
         JSONArray commentsJSON = new JSONArray();
         for (Comment comment : commentsList) {
             JSONObject commentObject = new JSONObject();

@@ -49,5 +49,11 @@ public class ProjectList {
         return null;
     }
 
+    public void add(Project project) {
+        Project newProject = new Project(project.getProjectName(), project.getProjectID(), project.getUsers());
+        // You can also set the columns if needed
+        newProject.setColumns(project.getColumns());
+    }
+
 
 }
