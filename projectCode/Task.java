@@ -1,5 +1,7 @@
 package projectCode;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -43,6 +45,24 @@ public class Task {
         this.taskDate = taskDate;
         this.taskType = taskType;
         this.comments = comments;
+    }
+
+    public Task(UUID taskID, String taskName, String description, String document, String taskDate, String taskType) {
+        this.taskID = taskID;
+        this.taskName = taskName;
+        this.description = description;
+        this.document = document;
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // You can adjust the date format as needed
+            this.taskDate = dateFormat.parse(taskDate);
+        } catch (ParseException e) {
+            this.taskDate = new Date();
+        }
+        try {
+            this.taskType = TaskType.valueOf(taskType);
+        } catch (IllegalArgumentException e) {
+            
+        }
     }
 
     /**
