@@ -2,9 +2,11 @@ package projectCode;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.Before;
 /* 
 import org.junit.BeforeClass;
 import org.junit.AfterClass;
@@ -27,25 +29,31 @@ public class CommentTest {
      * assertTrue: expecting the reply to be there
      */
     @Test
-    public void testAddCommentSize(){
-        Comment comment = new Comment("this is my comment", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date());
-        comment.createNewComment("Comment reply", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date(), comment);
+    public void testCreateCommentSize(){
+        String message = "this is my comment";
+        String replyMessage = "Comment reply";
+        Comment comment = new Comment(message, new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date());
+        comment.createNewComment(replyMessage, new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date(), comment);
         List<Comment> comments = comment.getCommentThread();
 
         assertEquals(2, comments.size());
     }
     @Test
     public void testAddCommentOriginalComment(){
-        Comment comment = new Comment("this is my comment", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date());
-        comment.createNewComment("Comment reply", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date(), comment);
+        String message = "this is my comment";
+        String replyMessage = "Comment reply";
+        Comment comment = new Comment(message, new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date());
+        comment.createNewComment(replyMessage, new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date(), comment);
         List<Comment> comments = comment.getCommentThread();
 
         assertTrue(comments.contains(new Comment("this is my comment", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date())));
     }
     @Test
     public void testAddCommentSecondComment(){
-        Comment comment = new Comment("this is my comment", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date());
-        comment.createNewComment("Comment reply", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date(), comment);
+        String message = "this is my comment";
+        String replyMessage = "Comment reply";
+        Comment comment = new Comment(message, new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date());
+        comment.createNewComment(replyMessage, new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date(), comment);
         List<Comment> comments = comment.getCommentThread();
 
         assertTrue(comments.contains(new Comment("Comment reply", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date())));
@@ -61,17 +69,21 @@ public class CommentTest {
      * assertTFalse: expecting a return of false (the array to have something in it)
      */
     @Test
-    public void testGetCommentNotNull(){
-        Comment comment = new Comment("this is my comment", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date());
-        comment.createNewComment("Comment reply", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date(), comment);
+    public void testGetCommentThreadNotNull(){
+        String message = "this is my comment";
+        String replyMessage = "Comment reply";
+        Comment comment = new Comment(message, new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date());
+        comment.createNewComment(replyMessage, new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date(), comment);
         List<Comment> comments = comment.getCommentThread();
 
         assertNotNull(comments);
     }
     @Test
-    public void testGetCommentIsFalse(){
-        Comment comment = new Comment("this is my comment", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date());
-        comment.createNewComment("Comment reply", new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date(), comment);
+    public void testGetCommentThreadIsFalse(){
+        String message = "this is my comment";
+        String replyMessage = "Comment reply";
+        Comment comment = new Comment(message, new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date());
+        comment.createNewComment(replyMessage, new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date(), comment);
         List<Comment> comments = comment.getCommentThread();
 
         assertFalse(comments.isEmpty());
