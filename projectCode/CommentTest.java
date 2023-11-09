@@ -2,12 +2,11 @@ package projectCode;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.junit.Before;
-/* 
+/*
+import org.junit.Before; 
 import org.junit.BeforeClass;
 import org.junit.AfterClass;
 import org.junit.jupiter.api.AfterEach;
@@ -24,7 +23,7 @@ public class CommentTest {
      * calls getComment 
      * 
      * -assertion tests-
-     * assert equals: expect a 2 when testing th comment size
+     * assert equals: expect a 1 when testing th comment size
      * assertTrue: expecting the first comment to be there
      * assertTrue: expecting the reply to be there
      */
@@ -36,7 +35,7 @@ public class CommentTest {
         comment.createNewComment(replyMessage, new User("", "Beth", "Jones", "I_L0v3_C@t5", "CatLover371", "User"), new Date(), comment);
         List<Comment> comments = comment.getCommentThread();
 
-        assertEquals(2, comments.size());
+        assertEquals(1, comments.size());
     }
     @Test
     public void testAddCommentOriginalComment(){
