@@ -25,7 +25,6 @@ public class UserListTest {
 	public void setup() {
 		userList.clear();
         String uuid = UUID.randomUUID().toString();
-        ArrayList<Project> projectList = null;
 		userList.add(new User(uuid, "Samuel", "Falcon", "password123", "SFalcon", "USER"));
 		userList.add(new User(uuid, "Ashton", "Putman", "password321", "APutman", "USER"));
 		DataWriter.saveUsers(userList);
@@ -33,7 +32,7 @@ public class UserListTest {
 	
 	@AfterEach
 	public void tearDown() {
-		users.getUsers().clear();
+		users.getInstance().getUsers().clear();
 		DataWriter.saveUsers(userList);
 	}
 	

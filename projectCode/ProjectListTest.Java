@@ -1,12 +1,9 @@
 package projectCode;
 
 import static org.junit.Assert.assertNull;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 import org.junit.jupiter.api.AfterEach;
@@ -32,7 +29,7 @@ public class ProjectListTest {
 		ArrayList<User> users = null;
 		projectList.add(new Project(uuid, "project1", users));
 		projectList.add(new Project(uuid, "project2", users));
-		DataWriter.saveProjects(projects);
+		DataWriter.saveProjects(projectList);
 	}
 	
     /**
@@ -41,7 +38,7 @@ public class ProjectListTest {
 	@AfterEach
 	public void tearDown() {
 		projects.getInstance().getProjects().clear();
-		DataWriter.saveProjects();
+		DataWriter.saveProjects(projectList);
 	}
 	
 	
