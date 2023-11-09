@@ -5,7 +5,7 @@ import java.util.UUID;
 
 /** 
  * @author Cocky Coders
- * creates new user, allowsusers in and out of projects, and sets the user type
+ * creates new user, allows users in and out of projects, and sets the user type
  */
 public class User {
     private String firstName;
