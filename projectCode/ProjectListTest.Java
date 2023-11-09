@@ -5,16 +5,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.UUID;
-
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-    /**
-     * @Author Kaylee Walz
-     * Testing ProjectList class
-     */
+
 public class ProjectListTest {
-    
     private ProjectList projects = ProjectList.getInstance();
 	private ArrayList<Project> projectList = projects.getProjects();
 	
@@ -65,6 +60,4 @@ public class ProjectListTest {
 		Project hasEmpty = projects.getProject("");
 		assertNull(hasEmpty);
 	}
-	
-
 }
