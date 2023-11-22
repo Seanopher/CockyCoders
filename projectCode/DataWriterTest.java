@@ -33,12 +33,18 @@ class DataWriterTest {
         dataWriter = new DataWriter();
         userList = UserList.getInstance();
 
+        
         projectList.getProjects().clear();
         dataWriter.saveProjects(projectList.getProjects());
         dataWriter.saveUsers(userList.getUsers());
 
 
     }
+    /**
+     * it is important to note that this is commented out to allow the user
+     * to check the output class. The dataWriter has a output to a wrong file 
+     * which is causing some false negatives
+     */
     @AfterEach
     public void tearDown() {
         projectList.getProjects().clear();
@@ -219,6 +225,9 @@ class DataWriterTest {
 
     }
 
+    /**
+     * TESTING TASK
+     */
 @Test
     public void testSaveZeroTask(){
         ArrayList<Task> taskList = TaskList.getInstance().getTasks();
@@ -298,7 +307,9 @@ class DataWriterTest {
     }
 
     
-
+    /**
+     * TESTING USERS 
+     */
     @Test
     public void testSaveZeroUsers(){
         ArrayList<User> users = userList.getUsers();

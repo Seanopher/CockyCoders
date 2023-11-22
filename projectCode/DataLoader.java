@@ -21,9 +21,9 @@ public class DataLoader extends DataConstants {
         ArrayList<User> users = new ArrayList<User>();
 
         try {
-            FileReader reader = new FileReader(USER_FILE_NAME);
-            JSONObject obj = (JSONObject) new JSONParser().parse(reader);
-            JSONArray userArray = (JSONArray) obj.get("user");
+            FileReader reader = new FileReader(PROJECT_FILE_NAME);
+            //JSONObject obj = (JSONObject) new JSONParser().parse(reader);
+            JSONArray userArray = (JSONArray) new JSONParser().parse(reader);
             // ArrayList<Project> projectList = new ArrayList<Project>();
 
             for (Object userObj : userArray) {
@@ -62,8 +62,9 @@ public class DataLoader extends DataConstants {
 
         try {
             FileReader reader = new FileReader(PROJECT_FILE_NAME);
-            JSONObject obj = (JSONObject) new JSONParser().parse(reader);
-            JSONArray projectArray = (JSONArray) obj.get("project");
+            //JSONObject obj = (JSONObject) new JSONParser().parse(reader);
+            JSONArray projectArray = (JSONArray) new JSONParser().parse(reader);
+            //JSONArray projectArray = (JSONArray) obj.get("project");
 
             TaskList taskList = TaskList.getInstance();
             UserList userList = UserList.getInstance();
@@ -129,8 +130,10 @@ public class DataLoader extends DataConstants {
 
         try {
             FileReader reader = new FileReader(TASK_FILE_NAME);
-            JSONObject obj = (JSONObject) new JSONParser().parse(reader);
-            JSONArray taskArray = (JSONArray) obj.get("task");
+            //JSONObject obj = (JSONObject) new JSONParser().parse(reader);
+            JSONArray taskArray = (JSONArray) new JSONParser().parse(reader);
+
+           // JSONArray taskArray = (JSONArray) obj.get("task");
 
             for (Object taskObj : taskArray) {
                 JSONObject taskDetails = (JSONObject) taskObj;
