@@ -1,5 +1,4 @@
-{
-    "project": [{
+[{
         "id":"4d5e6a45-6d0b-4792-90d0-8c715e12a0a7",
         "name": "project1",
         "users": [
@@ -13,4 +12,3 @@
             {"title": "column3", "taskTitles": ["title7", "title8", "title9"]}
         ]
     }]
-}

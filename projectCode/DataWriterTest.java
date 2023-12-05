@@ -48,7 +48,7 @@ class DataWriterTest {
     @AfterEach
     public void tearDown() {
         projectList.getProjects().clear();
-        //dataWriter.saveProjects(projectList.getProjects());
+        dataWriter.saveProjects(projectList.getProjects());
 
     }
 
