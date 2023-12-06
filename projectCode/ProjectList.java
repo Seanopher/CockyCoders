@@ -1,5 +1,5 @@
 package projectCode;
-
+import java.util.UUID;
 import java.util.ArrayList;
 
 /**
@@ -40,7 +40,7 @@ public class ProjectList {
         return projects;
     }
 
-    public Project getProject(String projectID){
+    public Project getProject(UUID projectID){
         for (Project project : projects){
             if (project.getProjectID().equals(projectID))
                 return project;

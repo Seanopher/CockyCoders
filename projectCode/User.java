@@ -15,7 +15,8 @@ public class User {
     private String userID;
     private String password;
     private String userType;
-    private ArrayList<Project> projects;
+    private ArrayList<UUID> projects;
+    private ProjectList projectsList;
     protected UserList userList;
 
     /**
@@ -31,7 +32,7 @@ public class User {
     {
         if(userID != null && firstName != null && lastName != null && password != null && userType != null)
         {
-        this.projects = new ArrayList<Project>();
+        this.projects = new ArrayList<UUID>();
         this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -50,7 +51,7 @@ public class User {
      * @param userType
      * @return
      */
-    public void newUser(UUID userID, String firstName, String lastName, String password, String username, String userType, ArrayList<Project> projects){
+    public void newUser(UUID userID, String firstName, String lastName, String password, String username, String userType, ArrayList<UUID> projects){
         if(userID != null && firstName != null && lastName != null && password != null && userType != null){
             this.UUID = userID;
             this.userID = userID.toString();
@@ -88,14 +89,16 @@ public class User {
     public String getUserType(){
         return userType;
     }
-    public ArrayList<Project> getProjects(){
+    public ArrayList<UUID> getProjects(){
         return projects;
     }
     public ArrayList<String> displayProjects(User user){
         ArrayList<String> projectList = new ArrayList<String>();
+        projectsList = ProjectList.getInstance();
         for(int i = 0; i < user.getProjects().size(); ++i)
         {
-           projectList.add(user.getProjects().get(i).getProjectName());
+            
+           projectList.add(projectsList.getProject(projects.get(i)).getProjectName());
         }
         return projectList;
     }
@@ -107,7 +110,7 @@ public class User {
      */
     public boolean joinProject(Project project){
         if(project != null){
-            projects.add(project);
+            projects.add(project.getPID());
             return true;
         }
         return false;
@@ -121,7 +124,7 @@ public class User {
      */
     public boolean leaveProject(Project project){
         for(int i = 0; i < projects.size(); i++){
-            if(project.name.equalsIgnoreCase(projects.get(i).name)){
+            if(project.getPID().equals(projects.get(i))){
                 projects.remove(i);
                 return true;
             }
